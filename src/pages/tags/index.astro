@@ -7,28 +7,44 @@ const pageTitle = "Tag Index";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+  <main aria-labelledby="header" class="relative overflow-hidden">
+    <div class="relative w-full">
+      <div class="animate-marquee whitespace-nowrap gap-4 flex items-baseline">
+        <h1
+          class="font-normal tracking-tighter uppercase text-6xl lg:text-14xl py-12">
+          <span class="text-white"> tags</span>
+          <span class="text-gray">tags</span>
+          <span class="text-grayest">tags</span>
+          <span class="text-gray">tags</span>
+          <span class="text-white"> tags</span>
+          <span class="text-grayest">tags</span>
+          <span class="text-gray">tags</span>
+          <span class="text-grayest">tags</span>
+        </h1>
+      </div>
+    </div>
+  </main>
   <section>
-    <div class="px-8 mx-auto max-w-7xl lg:px-24">
-      <ol role="list" class="mt-16 space-y-10 sm:space-y-16">
-        <li>
-          <ol
-            role="list"
-            class="mt-8 divide-y divide-slate-300/30 rounded-2xl bg-slate-50 py-3 px-6 text-base tracking-tight sm:py-7 sm:px-8">
-              {
-                tags.map((tag) => (
-            <li
-              class="flex justify-between py-3"
-              aria-label="Strokes and fills on page 21">
-                  <span class="font-medium text-slate-900">
-                    <a href={`/tags/${tag}`}>{tag}</a>
-                  </span>
-                  </li>
-                  ))
-                }
-          </ol>
-        </li>
+    <div class="px-2 lg:px-8 w-full py-3">
+      <ol role="list">
+        {
+          tags.map((tag) => (
+            <>
+              <li>
+                <a
+                  class=" text-white hover:text-gray duration-200"
+                  href={`/tags/${tag}`}>
+                  <div>
+                    <p class="font-normal  tracking-tighter uppercase text-6xl md:text-10xl xl:text-12xl ">
+                      {tag}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            </>
+          ))
+        }
       </ol>
     </div>
   </section>
-  <div class="tags"></div>
 </BaseLayout>

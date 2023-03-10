@@ -1,9 +1,14 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/landing/Hero.astro";
-import Description from "../components/landing/Description.astro";
-import Screenshots from "../components/landing/Screenshots.astro";
-import Faq from "../components/landing/Faq.astro";
+import WorkEntries from "../components/landing/WorkEntries.astro";
+import LatestPostsHero from "../components/entries/LatestPostsHero.astro";
+import LatestPosts from "../components/entries/LatestPosts.astro";
+import UserIntro from "../components/landing/UserIntro.astro";
+import CTA from "../components/global/CTA.astro";
+import LogoCloud from "../components/global/LogoCloud.astro";
+const allPosts = await getCollection("posts");
 import { AstroSeo } from "@astrolib/seo";
 ---
 
@@ -43,7 +48,31 @@ import { AstroSeo } from "@astrolib/seo";
 />
 <BaseLayout>
   <Hero />
-  <Description />
-  <Screenshots />
-  <Faq />
+  <UserIntro />
+  <WorkEntries />
+  <LatestPostsHero />
+
+  <section>
+    <div class="px-2 lg:px-8 py-3">
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+        {
+          allPosts
+            .slice(0, 2)
+            .map((post) => (
+              <LatestPosts
+                url={"/posts/" + post.slug}
+                title={post.data.title}
+                description={post.data.description}
+                alt={post.data.title}
+                pubDate={post.data.pubDate.toString().slice(0, 10)}
+                author={post.data.author}
+                image={post.data.image.url}
+              />
+            ))
+        }
+      </ul>
+    </div>
+  </section>
+  <LogoCloud />
+  <CTA />
 </BaseLayout>

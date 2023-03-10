@@ -7,11 +7,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   markdown: {
     shikiConfig: {
-      theme: {
-        name: "custom",
-        type: "dark",
-        settings: tokenColors
-      },
+      theme: 'css-variables' ,
       wrap: true,
       skipInline: false,
       drafts: false

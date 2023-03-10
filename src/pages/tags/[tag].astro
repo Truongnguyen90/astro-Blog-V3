@@ -25,28 +25,35 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout pageTitle={tag}>
+  <main aria-labelledby="header" class="relative overflow-hidden">
+    <div class="relative w-full">
+      <div class="animate-marquee whitespace-nowrap gap-4 flex items-baseline">
+        <h1
+          class="font-normal tracking-tighter uppercase text-6xl lg:text-14xl py-12">
+          <span class="text-white">Posts tagged with {tag}</span>
+          <span class="text-gray">Posts tagged with {tag}</span>
+          <span class="text-grayest">Posts tagged with {tag}</span>
+          <span class="text-gray">Posts tagged with {tag}</span>
+          <span class="text-white"> tags</span>
+          <span class="text-grayest">Posts tagged with {tag}</span>
+          <span class="text-gray">Posts tagged with {tag}</span>
+          <span class="text-grayest">Posts tagged with {tag}</span>
+        </h1>
+      </div>
+    </div>
+  </main>
   <section>
-    <div class="px-8 mx-auto max-w-7xl lg:px-24 py-12 lg:py-32">
-      <p>Posts tagged with {tag}</p>
-      <ol role="list" class="mt-16 space-y-10 sm:space-y-16">
-        <li>
-          <ol
-            role="list"
-            class="mt-8 divide-y divide-slate-300/30 rounded-2xl bg-slate-50 py-3 px-6 text-base tracking-tight sm:py-7 sm:px-8">
-            {
-              posts.map((post) => (
-                <li
-                  class="flex justify-between py-3"
-                  aria-label="Strokes and fills on page 21">
-                  <BlogPost
-                    url={"/posts/" + post.slug}
-                    title={post.data.title}
-                  />
-                </li>
-              ))
-            }
-          </ol>
-        </li>
+    <div class="px-2 lg:px-8 w-full">
+      <ol
+        role="list"
+        class="font-normal tracking-tighter uppercase text-6xl md:text-10xl xl:text-12xl text-white hover:text-gray duration-200">
+        {
+          posts.map((post) => (
+            <li class="flex justify-between py-3" aria-label="Posts">
+              <BlogPost url={"/posts/" + post.slug} title={post.data.title} />
+            </li>
+          ))
+        }
       </ol>
     </div>
   </section>

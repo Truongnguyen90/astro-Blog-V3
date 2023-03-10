@@ -1,15 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import StyleGuide from "../components/infopages/StyleGuide.astro";
+import Contact from "../components/infopages/Contact.astro";
 
 import { AstroSeo } from "@astrolib/seo";
 ---
 
-<!---
-Use AstroSeo in all the pages you want different Seo than the index page
--->
 <AstroSeo
-  title="StyleGuide Michael Andreuzza"
+  title="About Michael Andreuzza"
   description="Your site description goes here"
   canonical="https://www.lexingtonthemes.com"
   openGraph={{
@@ -43,5 +40,5 @@ Use AstroSeo in all the pages you want different Seo than the index page
   }}
 />
 <BaseLayout>
-  <StyleGuide />
+  <Contact />
 </BaseLayout>

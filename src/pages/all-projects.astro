@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
+import Hero from "../components/work/Hero.astro";
+import Allprojects from "../components/work/Allprojects.astro";
+import LogoCloud from "../components/global/LogoCloud.astro";
 import { AstroSeo } from "@astrolib/seo";
 ---
 
@@ -8,7 +10,7 @@ import { AstroSeo } from "@astrolib/seo";
 Use AstroSeo in all the pages you want different Seo than the index page
 -->
 <AstroSeo
-  title="Terms"
+  title="All  works"
   description="Your site description goes here"
   canonical="https://www.lexingtonthemes.com"
   openGraph={{
@@ -42,5 +44,7 @@ Use AstroSeo in all the pages you want different Seo than the index page
   }}
 />
 <BaseLayout>
-
+  <Hero />
+  <Allprojects />
+  <LogoCloud />
 </BaseLayout>
