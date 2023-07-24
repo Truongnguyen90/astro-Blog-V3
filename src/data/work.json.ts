@@ -1,5 +1,5 @@
 export interface Template {
-  url: string;
+
   projectUrl: string;
   description: string;
   title: string;
@@ -11,7 +11,7 @@ export interface Template {
 
 };
 const workOne: Template = {
-  url: "/project",
+
   projectUrl: "/case-study",
   title: "Monoqrom",
   description: "Quick method to start your design projects in Figma and Tailwind CSS.",
@@ -22,7 +22,7 @@ const workOne: Template = {
   projectImage4: "/images/project4.png",
 };
 const workTwo: Template = {
-  url: "/project",
+
     projectUrl: "/case-study",
   image: "/images/diagonal.svg",
   description: "28 Dark mesh wallpapers to use on your projects or as wallpapers",
@@ -33,7 +33,7 @@ const workTwo: Template = {
   projectImage4: "https://d33wubrfki0l68.cloudfront.net/2f9f738ca398f15afa86b284f627cd1d84a96719/683c3/mac.jpg",
 };
 const workThree: Template = {
-  url: "/project",
+
   projectUrl: "/case-study",
   image: "/images/onda.svg",
   description: "16 Wave wallpapers to use on your projects or as wallpapers",
@@ -44,7 +44,7 @@ const workThree: Template = {
   projectImage4: "https://d33wubrfki0l68.cloudfront.net/6286d3a5d5d739c4729dc7cc6769ea4441b48cc6/2d2a4/o4.jpg",
 };
 const workfour: Template = {
-  url: "/project",
+
     projectUrl: "/case-study",
   image: "/images/figmax.svg",
   description: "A set of Figma covers inspired on 90's VHS Covers",
