@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogPost from "../../components/BlogPost.astro";
+import EntriesOne from "@/components/entries/EntriesOne.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -25,11 +25,12 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout pageTitle={tag}>
-  <main aria-labelledby="header" class="relative overflow-hidden">
+  <main class="relative overflow-hidden">
     <div class="relative w-full">
       <div class="animate-marquee whitespace-nowrap gap-4 flex items-baseline">
         <h1
-          class="font-normal tracking-tighter uppercase text-6xl lg:text-14xl py-12">
+          class="font-normal tracking-tighter uppercase text-6xl lg:text-14xl py-12"
+        >
           <span class="text-white">Posts tagged with {tag}</span>
           <span class="text-gray">Posts tagged with {tag}</span>
           <span class="text-grayest">Posts tagged with {tag}</span>
@@ -43,18 +44,25 @@ const { posts } = Astro.props;
     </div>
   </main>
   <section>
-    <div class="px-2 lg:px-8 w-full">
-      <ol
-        role="list"
-        class="font-normal tracking-tighter uppercase text-6xl md:text-10xl xl:text-12xl text-white hover:text-gray duration-200">
+    <div class="px-2 lg:px-8 py-3">
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+
         {
           posts.map((post) => (
             <li class="flex justify-between py-3" aria-label="Posts">
-              <BlogPost url={"/posts/" + post.slug} title={post.data.title} />
+              <EntriesOne
+                url={"/posts/" + post.slug}
+                title={post.data.title}
+                description={post.data.description}
+                alt={post.data.title}
+                pubDate={post.data.pubDate.toString().slice(0, 10)}
+                author={post.data.author}
+                image={post.data.image.url}
+              />
             </li>
           ))
         }
-      </ol>
+      </ul>
     </div>
   </section>
 </BaseLayout>

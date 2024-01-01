@@ -1,5 +1,5 @@
 ---
-const { title, url, description, pubDate, image } = Astro.props;
+const { title, url, pubDate, image } = Astro.props;
 ---
 
 <article
@@ -14,19 +14,13 @@ const { title, url, description, pubDate, image } = Astro.props;
   <div
     class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
     <time datetime={pubDate} class="mr-8 text-white"> {pubDate}</time>
-    <div class="-ml-4 flex items-center gap-x-4">
-      <svg
-        viewBox="0 0 2 2"
-        class="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50">
-        <circle cx="1" cy="1" r="1"></circle>
-      </svg>
-    </div>
+
   </div>
-  <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
+  <h3 class="mt-3 text-lg font-semibold lg:text-2xl  leading-6 text-white">
     <a href={url} title={title}>
       <span class="absolute inset-0"></span>
       {title}
-      <span class="font-normal text-sm line-clamp-2">{description}</span>
+
     </a>
   </h3>
 </article>

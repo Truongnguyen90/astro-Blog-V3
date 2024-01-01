@@ -128,12 +128,12 @@ module.exports = {
           gradient: "url('/images/gradient.mp4')",
         }),
         colors: {
-          darkest: "#0c0c0c",
-          darker: "#161618",
-          grayest: "#3f4346",
-          grayer: "#4e4e55",
-          gray: "#adadaf",
-          lightgray: "#eaeaeb",
+          darkest: "hsl(0, 0%, 5%)",
+          darker: "hsl(0, 0%, 10%)",
+          grayest: "hsl(210, 4%, 30%)",
+          grayer: "hsl(240, 5%, 32%)",
+          gray: "hsl(240, 2%, 68%)",
+          lightgray: "hsl(240, 2%, 91%)",
         },
         borderRadius: {
           "4xl": "2rem",
