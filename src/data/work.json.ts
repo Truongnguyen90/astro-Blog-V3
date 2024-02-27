@@ -12,7 +12,7 @@ const workOne: Template = {
   projectUrl: "/case-study",
   title: "Navy",
   description: "The most elegant theme on Lexington, designed for those who wants an elegant dark mode, sleek elements and beautiful websites. ",
-  image: "https://lexingtonthemes.com/navy.webp",
+  image: "https://lexingtonthemes.com/_astro/navy.CNZEuRY2_Gd096.avif",
  projectImage1: "https://lexingtonthemes.com/images/thumbnails/navy/one.png",
   projectImage2: "https://lexingtonthemes.com/images/thumbnails/navy/two.png",
   projectImage3: "https://lexingtonthemes.com/images/thumbnails/navy/three.png",
@@ -21,7 +21,7 @@ const workOne: Template = {
 const workTwo: Template = {
     projectUrl: "/case-study",
     title: "Flabbergasted",
-  image: "https://lexingtonthemes.com/flabbergasted.webp",
+  image: "https://lexingtonthemes.com/_astro/flabbergasted.DFr5HMdd_VyGNK.avif",
   description: "The Neo-brutalist theme on Lexington is designed for those who want to set themselves apart from the crowd. ",
   projectImage1: "https://lexingtonthemes.com/images/thumbnails/flabbergasted/one.png",
   projectImage2: "https://lexingtonthemes.com/images/thumbnails/flabbergasted/two.png",
@@ -31,7 +31,7 @@ const workTwo: Template = {
 const workThree: Template = {
   projectUrl: "/case-study",
     title: "Vanta",
-  image: "https://lexingtonthemes.com/vanta.webp",
+  image: "https://lexingtonthemes.com/_astro/vanta.DUcetj_8_nh6Ao.avif",
   description: "The sleekest e-learning platform theme around. For those who want to have a modern and dark theme.",
   projectImage1: "https://lexingtonthemes.com/images/thumbnails/vanta/one.png",
   projectImage2: "https://lexingtonthemes.com/images/thumbnails/vanta/two.png",
@@ -41,7 +41,7 @@ const workThree: Template = {
 const workfour: Template = {
   projectUrl: "/case-study",
   title: "Simplexity",
-image: "https://lexingtonthemes.com/simplexity.webp",
+image: "https://lexingtonthemes.com/_astro/simplexity.CXWGe2Bk_DJ6qp.avif",
 description: "TThe clean and elegant light and dark blog theme on Lexington, designed for those who likes minimalism and a simplicity on elements and websites.",
 projectImage1: "https://lexingtonthemes.com/images/thumbnails/simplexity/one.png",
 projectImage2: "https://lexingtonthemes.com/images/thumbnails/simplexity/two.png",
