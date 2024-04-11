@@ -9,10 +9,10 @@ import "../styles/global.css";
   <head>
     <BaseHead />
   </head>
-  <body class="bg-darkest">
+  <body class="bg-darkest flex flex-col min-h-svh 2xl:max-w-7xl mx-auto">
     <Navigation />
 
-    <slot />
+    <main class="grow"><slot /></main>
     <Footer />
   </body>
 </html>
