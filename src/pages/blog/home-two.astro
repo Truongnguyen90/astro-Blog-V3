@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import EntriesTwo from "@/components/blog/EntriesTwo.astro";
+import SubscribeCta from "@/components/blog/SubscribeCta.astro";
+const allPosts = await getCollection("posts");
+---
+
+<BaseLayout>
+  <section>
+    <div class="px-8 py-24 mx-auto">
+      <div class="text-center max-w-xl mx-auto">
+        <h1
+          class="text-4xl tracking-tight text-balance text-white md:text-6xl">
+          Welcome to my blog full of
+          <span class="font-display italic font-light tracking-wide block">
+            news and thoughts
+          </span>
+        </h1>
+        <p class="mt-4 text-base font-medium text-zinc-400 text-balance">
+          I write about everything that I learn, join me on my journey.
+        </p>
+      </div>
+      <ul
+        role="list"
+        class="grid sm:grid-cols-2 gap-2 mt-6 max-w-xl mx-auto">
+        {
+          allPosts.slice().map((post) => (
+            <EntriesTwo
+              url={"/blog/posts/" + post.slug}
+              title={post.data.title}
+              description={post.data.description}
+              alt={post.data.title}
+              pubDate={post.data.pubDate.toString().slice(0, 10)}
+              author={post.data.author}
+              image={post.data.image.url}
+            />
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+  <SubscribeCta />
+</BaseLayout>

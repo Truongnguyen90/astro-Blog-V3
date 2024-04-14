@@ -1,0 +1,94 @@
+---
+// Define the logos data
+const logos = [
+  "/assets/logos/1.svg",
+  "/assets/logos/2.svg",
+  "/assets/logos/3.svg",
+  "/assets/logos/4.svg",
+  "/assets/logos/5.svg",
+  "/assets/logos/6.svg",
+  "/assets/logos/1.svg",
+  "/assets/logos/2.svg",
+  "/assets/logos/3.svg",
+  "/assets/logos/4.svg",
+  "/assets/logos/5.svg",
+  "/assets/logos/6.svg",
+  // Add more logo paths as needed
+];
+---
+<section>
+  <div class="px-8 py-24 mx-auto">
+
+    <div class="text-center max-w-xl mx-auto">
+      <a
+        href="/studio/home"
+        class="inline-flex space-x-6 group">
+        <span
+          class="rounded-full bg-blue-500/10 px-3 py-1 text-sm font-meidum leading-6 text-blue-400 ring-1 ring-inset ring-blue-500/20"
+          >Hire me</span
+        >
+        <span
+          class="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-zinc-400">
+          <span>2 spots open</span>
+          <svg
+
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right size-4"
+            ><path
+              stroke="none"
+              d="M0 0h24v24H0z"
+              fill="none"
+            ></path><path d="M9 6l6 6l-6 6"></path></svg
+          >
+        </span>
+      </a>
+      <div
+        class="mt-8 text-4xl tracking-tight text-balance text-white md:text-6xl">
+        <div class="flex gap-3 items-center justify-center">
+          Hi, I'm Flaco,
+          <img
+            src="/assets/avatar.png"
+            class="size-12 rounded-xl md:size-16"
+            alt=""
+          />
+        </div>
+        <div class="font-display italic font-light tracking-wide text-zinc-400">
+          software engineer.
+        </div>
+      </div>
+      <p class="mt-4 text-base font-medium text-zinc-400 text-balance">
+        Crafting code, one line at a time: meet flaco, software engineer
+        extraordinaire, yo!
+      </p>
+      <div
+        class="relative mx-auto mt-12 overflow-hidden overflow-x-hidden py-2">
+        <div class="w-full justify-between grid">
+          <div
+            class="absolute inset-0 from-zinc-950 left-0 via-transparent w-44 z-10 bg-gradient-to-r">
+          </div>
+          <div
+            class="absolute inset-0 from-zinc-950 left-0 via-transparent w-44 z-10 bg-gradient-to-l ml-auto">
+          </div>
+        </div>
+        <div
+          class="items-center relative animate-marquee flex   gap-4 whitespace-nowrap">
+          {
+            logos.map((logo) => (
+              <img
+                class="h-8"
+                src={logo}
+                alt={logo}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

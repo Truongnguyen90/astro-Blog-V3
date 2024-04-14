@@ -1,29 +1,151 @@
 ---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Header from "@/components/landing/Header.astro";
 import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/landing/Hero.astro";
-import WorkEntries from "../components/landing/WorkEntries.astro";
-import LatestPostsHero from "../components/entries/LatestPostsHero.astro";
-import LatestPosts from "../components/entries/LatestPosts.astro";
-import UserIntro from "../components/landing/UserIntro.astro";
-import CTA from "../components/global/CTA.astro";
-import LogoCloud from "../components/global/LogoCloud.astro";
+const allHighlights = await getCollection("projects");
 const allPosts = await getCollection("posts");
+import Highlights from "@/components/projects/Highlights.astro";
+import EntriesOne from "@/components/blog/EntriesOne.astro";
+const stack = [
+  {
+    items: [
+      {
+        rotation: "rotate-6",
+        stackLogo: "/stacklogos/penpot.svg",
+        name: "Penpot",
+        about: "Design Tool",
+        description:
+          "Penpot is the web-based open-source design tool that bridges the gap between designers and developers.",
+      },
+      {
+        otation: "-rotate-12",
+        stackLogo: "/stacklogos/tabler.svg",
+        name: "Tabler Icons",
+        about: "Icon Library",
+        description:
+          "Free and open source icons designed to make your website or app attractive, visually consistent and simply beautiful.",
+      },
+      // Add more items as necessary
+      {
+        rotation: "rotate-6",
+        stackLogo: "/stacklogos/arc.svg",
+        name: "Arc",
+        about: "Browser",
+        description:
+          "The Arc Browser is a new web browser developed by The Browser Company, aiming to revolutionize the way users interact with the internet.",
+      },
+      {
+        rotation: "-rotate-12",
+        stackLogo: "/stacklogos/tailwind.svg",
+        name: "Tailwind CSS",
+        about: "CSS Framework",
+        description:
+          "A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.",
+      },
+      {
+        rotation: "rotate-6",
+        stackLogo: "/stacklogos/astro.svg",
+        name: "Astrojs",
+        about: "Static Site Generator",
+        description:
+          "Astro powers the world's fastest websites, client-side web apps, dynamic API endpoints, and everything in-between..",
+      },
+      {
+        rotation: "-rotate-12",
+        stackLogo: "/stacklogos/vscode.svg",
+        name: "VS Code",
+        about: "Code Editor",
+        description:
+          "Visual Studio Code (VS Code) is a source-code editor developed by Microsoft for Windows, Linux, and macOS",
+      },
+    ],
+  },
+];
 ---
 <BaseLayout>
-  <Hero />
-  <UserIntro />
-  <WorkEntries />
-  <LatestPostsHero />
+  <Header />
   <section>
-    <div class="px-2 lg:px-8 py-3">
-      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
-        {
-          allPosts
-            .slice(0, 2)
-            .map((post) => (
-              <LatestPosts
-                url={"/posts/" + post.slug}
+    <div class="px-8 py-12 mx-auto">
+      <div class="max-w-xl mx-auto">
+        <div class="flex justify-between items-center">
+          <p
+            class="text-2xl font-display italic tracking-wide text-white">
+            Projects
+          </p>
+          <a
+             class="hover:text-blue-400 flex items-center gap-2 group text-zinc-400"
+            href="/projects/home"
+            >See them all <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right size-4 group-hover:translate-x-2 duration-300"
+              ><path
+                stroke="none"
+                d="M0 0h24v24H0z"
+                fill="none"
+              ></path><path d="M9 6l6 6l-6 6"></path></svg
+            ></a
+          >
+        </div>
+        <div
+          role="list"
+          class="grid md:grid-cols-2 mt-6 gap-2">
+          {
+            allHighlights
+              .slice(0, 2)
+              .map((post) => (
+                <Highlights
+                  url={"/projects/" + post.slug}
+                  live={post.data.live}
+                  subtitle={post.data.subtitle}
+                  title={post.data.title}
+                />
+              ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="px-8 py-12 mx-auto">
+      <div class="max-w-xl mx-auto">
+        <div class="flex justify-between items-center">
+          <p
+            class="text-2xl font-display italic tracking-wide text-white">
+            Blog
+          </p>
+          <a
+            class="hover:text-blue-400 flex items-center gap-2 group text-zinc-400"
+            href="/blog/home"
+            >Read all my blog posts <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right size-4 group-hover:translate-x-2 duration-300"
+              ><path
+                stroke="none"
+                d="M0 0h24v24H0z"
+                fill="none"
+              ></path><path d="M9 6l6 6l-6 6"></path></svg
+            ></a
+          >
+        </div>
+        <div
+          role="list"
+          class="mt-6 gap-2">
+          {
+            allPosts.slice(0, 1).map((post) => (
+              <EntriesOne
+                url={"/blog/posts/" + post.slug}
                 title={post.data.title}
                 description={post.data.description}
                 alt={post.data.title}
@@ -32,10 +154,81 @@ const allPosts = await getCollection("posts");
                 image={post.data.image.url}
               />
             ))
-        }
-      </ul>
+          }
+        </div>
+      </div>
     </div>
   </section>
-  <LogoCloud />
-  <CTA />
+  <section>
+    <div class="px-8 py-12 mx-auto">
+      <div class="max-w-xl mx-auto">
+        <div class="flex justify-between items-center">
+          <p
+            class="text-2xl font-display italic tracking-wide text-white">
+            Stack
+          </p>
+          <a
+            class="hover:text-blue-400 flex items-center gap-2 group text-zinc-400"
+            href="/about/stack"
+            >Check out my whole stack <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right size-4 group-hover:translate-x-2 duration-300"
+              ><path
+                stroke="none"
+                d="M0 0h24v24H0z"
+                fill="none"
+              ></path><path d="M9 6l6 6l-6 6"></path></svg
+            ></a
+          >
+        </div>
+        <div class="mt-6    relative overflow-hidden">
+          <div class="w-full justify-between grid">
+            <div
+              class="absolute inset-0 from-zinc-950 left-0 via-transparent w-44 z-10 bg-gradient-to-r">
+            </div>
+            <div
+              class="absolute inset-0 from-zinc-950 left-0 via-transparent w-44 z-10 bg-gradient-to-l ml-auto">
+            </div>
+          </div>
+          {
+            stack.map((section) => (
+              <ul
+                role="list"
+                class="flex gap-2 dark:border-zinc-700 py-12  lg:col-span-2 animate-marquee">
+                {section.items.map((item) => (
+                  <li
+                    class={`flex flex-col ring-1 shadow-3xl justify-between w-full min-h-72 min-w-72  p-6 rounded-2xl relative overflow-hidden h-full bg-gradient-to-tr  from-zinc-800 duration-300 to-black dark:ring-zinc-800 ring-zinc-800 ring-inset group dark:hover:shadow-3xlHover transform transition-all group ${item.rotation}`}>
+                    <div class=" flex items-center justify-between gap-x-4">
+                      <div>
+                        <p class="font-medium text-white  text-base ">
+                          {item.name}
+                        </p>
+                        <p class="text-zinc-400 leading-tight">
+                          {item.about}
+                        </p>
+                      </div>
+                      <img
+                        src={item.stackLogo}
+                        alt={item.name}
+                        class="size-8 rounded-xl dark:border dark:border-zinc-700 group-hover:-rotate-45 duration-300"
+                      />
+                    </div>
+                    <p class="text-zinc-400 leading-tight mt-2 text-sm text-pretty">
+                      {item.description}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

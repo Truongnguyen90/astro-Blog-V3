@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+const allProducts = await getCollection("store");
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import StoreEntries from "@/components/store/StoreEntries.astro";
+---
+
+<BaseLayout>
+  <section>
+    <div class="px-8 py-24 mx-auto">
+      <div class="text-center max-w-lg mx-auto">
+        <h1
+          class="text-4xl text-balance text-white md:text-5xl font-display italic tracking-wide">
+          Digital products for your business
+        </h1>
+
+        <p class="mt-8 text-base font-medium text-zinc-400 text-balance">
+          Shop my selection of digital products to help you grow your business,
+          and to make your life easier and more productive.
+        </p>
+      </div>
+
+
+      <div
+        class="mt-6 flex flex-col gap-2 max-w-xl mx-auto">
+        {
+          allProducts.slice().map((post) => (
+            <StoreEntries
+              url={"/store/" + post.slug}
+              price={post.data.price}
+              title={post.data.title}
+              description={post.data.description}
+              alt={post.data.title}
+              image={post.data.image.url}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

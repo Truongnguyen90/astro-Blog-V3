@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+const allPosts = await getCollection("posts");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+const pageTitle = "Tag Index";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section>
+    <div class="px-8 py-24 mx-auto">
+      <div class="text-center max-w-xl mx-auto">
+        <h1
+          class="text-4xl tracking-tight text-balance text-white md:text-6xl">
+          Blog posts
+          <span class="font-display italic font-light tracking-wide block">
+            tagged with
+          </span>
+        </h1>
+        <p class="mt-4 text-base font-medium text-zinc-400 text-balance">
+       Find all the posts tagged with a specific tag.
+        </p>
+      </div>
+      <ol
+        class="max-w-xl mx-auto mt-6 grid-cols-2 grid md:grid-cols-3 text-center gap-2"
+         role="list">
+        {
+          tags.map((tag) => (
+            <>
+              <li>
+                <a class="text-zinc-400 hover:text-blue-400 capitalize " href={`/blog/tags/${tag}`}>{tag}</a>
+              </li>
+            </>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+</BaseLayout>

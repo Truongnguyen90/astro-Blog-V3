@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+const allProjects = await getCollection("projects");
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectEntries from "@/components/projects/ProjectEntries.astro";
+---
+<BaseLayout>
+  <section>
+    <div class="px-8 py-24 mx-auto">
+      <div class="text-center max-w-xl mx-auto">
+        <h1
+          class="text-4xl tracking-tight text-balance text-white md:text-6xl">
+          I like to build
+          <span class="font-display italic font-light tracking-wide">
+            projects from scrach
+          </span>
+        </h1>
+        <p class="mt-4 text-base font-medium text-zinc-400 text-balance">
+          When I'm not working I build things that make me explore and learn,
+          and I love to share my projects with the world.
+        </p>
+      </div>
+      <ul
+        role="list"
+        class="flex flex-col gap-2 mt-6 max-w-xl mx-auto">
+        {
+          allProjects.map((post) => (
+            <ProjectEntries
+              url={"/projects/" + post.slug}
+              subtitle={post.data.subtitle}
+              title={post.data.title}
+              alt={post.data.title}
+              logo={post.data.logo.url}
+              image={post.data.image.url}
+              pubDate={post.data.pubDate.toString().slice(10, 15)}
+            />
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
