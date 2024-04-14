@@ -1,0 +1,133 @@
+---
+// Structure the stack with their respective items
+const stack = [
+  {
+    title: "Design",
+    items: [
+      {
+        stackLogo: "/stacklogos/penpot.svg",
+        name: "Penpot",
+        about: "Design Tool",
+        description:
+          "Penpot is the web-based open-source design tool that bridges the gap between designers and developers.",
+      },
+      {
+        stackLogo: "/stacklogos/tabler.svg",
+        name: "Tabler Icons",
+        about: "Icon Library",
+        description:
+          "Free and open source icons designed to make your website or app attractive, visually consistent and simply beautiful.",
+      },
+      // Add more items as necessary
+    ],
+  },
+  {
+    title: "Developer Tools",
+    items: [
+      {
+        stackLogo: "/stacklogos/arc.svg",
+        name: "Arc",
+        about: "Browser",
+        description:
+          "The Arc Browser is a new web browser developed by The Browser Company, aiming to revolutionize the way users interact with the internet.",
+      },
+      {
+        stackLogo: "/stacklogos/tailwind.svg",
+        name: "Tailwind CSS",
+        about: "CSS Framework",
+        description:
+          "A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.",
+      },
+      {
+        stackLogo: "/stacklogos/astro.svg",
+        name: "Astrojs",
+        about: "Static Site Generator",
+        description:
+          "Astro powers the world's fastest websites, client-side web apps, dynamic API endpoints, and everything in-between..",
+      },
+      {
+        stackLogo: "/stacklogos/vscode.svg",
+        name: "VS Code",
+        about: "Code Editor",
+        description:
+          "Visual Studio Code (VS Code) is a source-code editor developed by Microsoft for Windows, Linux, and macOS",
+      },
+      // Add more items as necessary
+    ],
+  },
+  {
+    title: "Productivity",
+    items: [
+      {
+        stackLogo: "/stacklogos/lexingtonthemes.svg",
+        name: "Lexingont Themes",
+        about: "Website Themes",
+        description:
+          "Free and premium multipage themes and UI Kits for freelancers, developers, businesses, and personal use. Beautifully crafted with Astro.js, and Tailwind CSS.",
+      },
+      {
+        stackLogo: "/stacklogos/notes.svg",
+        name: "Apple notes",
+        about: "Notes",
+        description:
+          "Apple Notes is a notetaking app developed by Apple Inc. It is provided on the company's iOS, iPadOS, visionOS, and macOS operating systems.",
+      },
+      // Add more items as necessary
+    ],
+  },
+];
+---
+
+<section>
+  <div class="px-8 py-24 mx-auto">
+    <div class="text-center max-w-xl mx-auto">
+      <h1 class="text-4xl tracking-tight text-balance text-white md:text-6xl">
+        Software I use daily
+        <span class="font-display italic font-light tracking-wide">
+          and recommend
+        </span>
+      </h1>
+      <p class="mt-4 text-base font-medium text-zinc-400 text-balance">
+        I get askeed about the tools that I use daily and be productive. Here is
+        a list of my favorite software programs, gadgets, and other
+        recommendations.
+      </p>
+    </div>
+    <div class="mt-6 max-w-xl mx-auto space-y-12">
+      {
+        stack.map((section) => (
+          <div class="flex flex-col gap-6  ">
+            <p class="text-2xl font-display italic tracking-wide text-white">
+              {section.title}
+            </p>
+
+            <ul
+              role="list"
+              class="grid sm:grid-cols-2 gap-2  lg:col-span-2">
+              {section.items.map((item) => (
+                <li class="flex flex-col ring-1 shadow-3xl justify-between w-full min-h-72  p-6 rounded-2xl relative overflow-hidden h-full bg-gradient-to-tr from-zinc-800 to-zinc-950 ring-zinc-800 ring-inset group hover:shadow-3xlHover transform transition-all group">
+                  <div class=" flex items-center justify-between gap-x-4">
+                    <div>
+                      <p class="font-medium text-white  text-base ">
+                        {item.name}
+                      </p>
+                      <p class="text-zinc-400 leading-tight">{item.about}</p>
+                    </div>
+                    <img
+                      src={item.stackLogo}
+                      alt={item.name}
+                      class="size-8 rounded-full  group-hover:-rotate-45 duration-300"
+                    />
+                  </div>
+                  <p class="text-zinc-400 leading-tight mt-2 text-sm text-pretty">
+                    {item.description}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

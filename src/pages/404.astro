@@ -1,7 +1,30 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Error404 from "../components/infopages/Error404.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
+
 <BaseLayout>
-<Error404/>
+  <section>
+    <div class="px-8 py-24 mx-auto">
+      <div class="text-center max-w-xl mx-auto">
+        <h1 class="text-4xl tracking-tight text-balance text-white md:text-6xl">
+          Oh, oh...........!
+          <span class="font-display italic font-light tracking-wide">
+            404 error
+          </span>
+        </h1>
+        <p class="mt-4 text-base font-medium text-zinc-400 text-balance">
+          An error has occurred. The page you are looking for may have been
+          moved, deleted, or does not exist. Please try again. If the problem
+          persists, please contact the site administrator.
+        </p>
+        <div class="mt-8 flex">
+          <a
+            class="rounded-full bg-white px-4 flex gap-1 items-center py-2.5 h-9 text-sm font-semibold text-black hover:bg-zinc-200 duration-300 ring-1 ring-inset ring-zinc-200 mx-auto"
+            href="/"
+            >Go back home
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
