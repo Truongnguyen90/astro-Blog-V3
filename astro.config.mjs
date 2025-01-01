@@ -1,11 +1,13 @@
 import { defineConfig } from "astro/config";
-import preact from "@astrojs/preact";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from '@tailwindcss/vite';
+
 import sitemap from "@astrojs/sitemap";
-import devtoolBreakpoints from "astro-devtool-breakpoints";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
   markdown: {
     shikiConfig: {
       theme: 'css-variables',
@@ -14,6 +16,6 @@ export default defineConfig({
       drafts: false
     }
   },
-  site: 'https://lexingtonthemes.com',
-  integrations: [preact(), tailwind(), sitemap(), devtoolBreakpoints()]
+  site: 'https://yourdomain.com',
+  integrations: [ sitemap()]
 });

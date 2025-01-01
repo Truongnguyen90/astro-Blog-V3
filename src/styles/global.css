@@ -1,14 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.prose-styles {
-  @apply prose prose-blockquote:border-l-zinc-400 prose-a:text-zinc-400 hover:prose-a:text-white prose-headings:font-normal prose-headings:text-white prose-li:marker:text-zinc-500 text-zinc-400  prose-blockquote:text-zinc-400  prose-strong:font-medium prose-pre:ring-1  prose-pre:shadow-3xl prose-strong:text-white prose-code:text-white prose-pre:ring-zinc-700;
-
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@layer components {
+  .prose-styles {
+    @apply prose prose-blockquote:border-l-zinc-400 prose-a:text-zinc-400 hover:prose-a:text-white prose-headings:font-normal prose-headings:text-white prose-li:marker:text-zinc-500 text-zinc-400  prose-blockquote:text-zinc-400  prose-strong:font-medium prose-pre:ring-1  prose-pre:shadow-3xl prose-strong:text-white prose-code:text-white prose-pre:ring-zinc-700;
+  }
+}
+@theme {
+/* Typography*/
+  --font-sans: "Satoshi", sans-serif;
+  --font-mono: "JetBrains Mono", monspaced;
+  --font-display: "Instrument Serif", serif;
+  /* Colors */
+  --color-base: #191919;
+  /* Shadows */
+--shadow-3xl: rgba(0, 0, 0, 0.1) 0px 4px 10px -2px, rgba(0, 0, 0, 0.1) 0px 2px 2px -1px, rgba(255, 255, 255, 0.08) 0px 0px 0px 1px;
+--shadow-3xlHover: 0 -2px 6px hsla(0,0%,100%,.17),0 5px 18px rgba(0,0,0,.4),0 4px 40px 8px rgba(0,0,0,.4),0 1px 4px -1px rgba(0,0,0,.302),inset 0 0 0 .3px hsla(0,0%,100%,.3),0 0 0 .5px hsla(0,0%,100%,.4);
 }
 
-
 :root {
+  /*Style code blocks */
   --astro-code-token-link: theme(textColor.white);
   --astro-code-token-keyword: theme(textColor.black);
   --astro-code-token-function: theme(textColor.black);
@@ -20,4 +31,17 @@
   --astro-code-token-constant: theme(textColor.zinc.600);
   --astro-code-color-background: theme(backgroundColor.white);
   --astro-code-token-string-expression: theme(textColor.zinc.600);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee {
+  animation: marquee 12s linear infinite;
 }
