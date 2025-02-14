@@ -1,149 +1,147 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
+// Assets
+import { Image } from "astro:assets";
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Link from "@/components/fundations/elements/Link.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Content
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout>
   <section>
-    <div class="px-8 py-24 mx-auto">
-      <div class="text-center max-w-lg mx-auto">
-        <h1
-          class="text-4xl text-balance text-white md:text-5xl font-display italic tracking-wide">
+    <Wrapper class="py-24">
+      <div class="text-center">
+        <Text
+          tag="h1"
+          variant="displayXL"
+          class="dark:text-white text-base-900 text-balance"
+        >
           {frontmatter.title}
-        </h1>
+        </Text>
 
-        <p class="mt-8 text-base font-medium text-zinc-400 text-balance">
+        <Text
+          tag="p"
+          variant="textLG"
+          class="mt-8 dark:text-base-400 text-base-600 text-balance"
+        >
           {frontmatter.description}
-        </p>
+        </Text>
       </div>
 
-      <div class="max-w-xl mx-auto mt-6">
-        <div class="flex items-center gap-4 justify-center">
-          <a
-            class="rounded-full bg-white px-4 flex gap-1 items-center py-2.5 h-9 text-sm font-semibold text-black hover:bg-zinc-200 duration-300 ring-1 ring-inset ring-zinc-200 group"
-            href="#_"
-            title="your title"
-            aria-label="your label">
-            Buy {frontmatter.title} for ${frontmatter.price}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right size-4 group-hover:translate-x-2 duration-300"
-              ><path
-                stroke="none"
-                d="M0 0h24v24H0z"
-                fill="none"
-              ></path><path d="M9 6l6 6l-6 6"></path></svg
-            >
-          </a>
-          <a
-            class="hover:text-blue-400 flex items-center gap-2 group text-zinc-400"
-            href={frontmatter.preview}
-            title={frontmatter.preview}
-            aria-label={frontmatter.preview}>
-            Preview demo
-          </a>
-        </div>
+      <div class="flex items-center justify-center gap-4 mt-6">
+        <Link
+          size="sm"
+          variant="muted"
+          href={frontmatter.preview}
+          title={frontmatter.preview}
+          aria-label={frontmatter.preview}
+        >
+          Preview demo
+        </Link>
+        <Link
+          size="sm"
+          variant="default"
+          href="#_"
+          title="your title"
+          aria-label="your label"
+        >
+          Buy {frontmatter.title} for ${frontmatter.price}
+        </Link>
+      </div>
 
-        <div class="space-y-12 mt-6">
+      <div class="mt-12 space-y-12">
+        <Image
+          src={frontmatter.image.url}
+          alt={frontmatter.image.alt}
+          width={600}
+          height={600}
+          class="object-cover object-top w-full rounded-2xl shadow ring-1 dark:ring-base-800 ring-base-200"
+        />
+
+        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          <Text
+            tag="h3"
+            variant="displaySM"
+            class="italic tracking-wide dark:text-white text-base-900 font-display"
+          >
+            Includes
+          </Text>
+          <ul role="list">
+            <!-- Dynamically render highlights -->
+            {
+              frontmatter.highlights.map((highlight) => (
+                <li>
+                  <Text
+                    tag="p"
+                    variant="textSM"
+                    class=" dark:text-base-400 text-base-600"
+                  >
+                    {highlight}
+                  </Text>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          <Text
+            tag="h3"
+            variant="displaySM"
+            class="italic tracking-wide dark:text-white text-base-900 font-display"
+          >
+            License
+          </Text>
+          <Text
+            tag="p"
+            variant="textSM"
+            class="dark:text-base-400 text-base-600"
+          >
+            {frontmatter.license}
+          </Text>
+        </div>
+        <div class="grid gap-2 sm:grid-cols-2">
           {
-            frontmatter.images.slice(0, 1).map((image) => (
-              <img
-                class="rounded-2xl shadow-3xl  ring-1 max-h-72 ring-zinc-800 w-full object-cover object-top"
+            frontmatter.images.map((image) => (
+              <Image
                 src={image.url}
                 alt={image.alt}
+                width={400}
+                height={400}
+                class="rounded-2xl shadow    ring-1 aspect-[384/246] dark:ring-base-800     ring-base-200     w-full object-cover object-top"
               />
             ))
           }
-
-          <div class="mt-6 grid sm:grid-cols-2 prose-styles">
-            <div>
-              <h3 class="text-2xl font-display italic tracking-wide text-white">
-                Includes
-              </h3>
-              <ul>
-                <!-- Dynamically render highlights -->
-                {
-                  frontmatter.highlights.map((highlight) => (
-                    <li>{highlight}</li>
-                  ))
-                }
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-2xl font-display italic tracking-wide text-white">
-                License
-              </h3>
-              <p>
-                {frontmatter.license}
-              </p>
-            </div>
-          </div>
-          <div class="grid gap-2 sm:grid-cols-2">
-            {
-              frontmatter.images.map((image) => (
-                <img
-                  class="rounded-2xl shadow-3xl  ring-1 aspect-[384/246] ring-zinc-800 w-full object-cover object-top"
-                  src={image.url}
-                  alt={image.alt}
-                />
-              ))
-            }
-          </div>
-          <dl class="grid gap-2 sm:grid-cols-2 mt-6">
-            {
-              frontmatter.features.map((feature) => (
-                <div class="flex flex-col ring-1 shadow-3xl justify-between w-full min-h-72  p-6 rounded-2xl relative overflow-hidden h-full bg-gradient-to-tr from-zinc-800 to-zinc-950 ring-zinc-800 ring-inset group hover:shadow-3xlHover transform transition-all group">
-                  <dt>
-                    <span class="font-medium text-white text-base uppercase sm:text-3xl font-display italic tracking-wide">
-                      {feature.title}
-                    </span>
-                  </dt>
-                  <dd class="text-zinc-400 leading-tight mt-24 sm:text-2xl text-pretty">
-                    {feature.description}
-                  </dd>
-                </div>
-              ))
-            }
-          </dl>
-          <div class="flex items-center gap-4 justify-center mt-6">
-            <a
-              class="rounded-full bg-white px-4 flex gap-1 items-center py-2.5 h-9 text-sm font-semibold text-black hover:bg-zinc-200 duration-300 ring-1 ring-inset ring-zinc-200 group"
-              href="#_"
-              title="your title"
-              aria-label="your label">
-              Buy {frontmatter.title} for ${frontmatter.price}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right size-4 group-hover:translate-x-2 duration-300"
-                ><path
-                  stroke="none"
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                ></path><path d="M9 6l6 6l-6 6"></path></svg
-              >
-            </a>
-            <a
-              class="hover:text-blue-400 flex items-center gap-2 group text-zinc-400"
-              href={frontmatter.preview}
-              title={frontmatter.preview}
-              aria-label={frontmatter.preview}>
-              Preview demo
-            </a>
-          </div>
         </div>
+        <dl class="grid gap-2 mt-6 sm:grid-cols-2">
+          {
+            frontmatter.features.map((feature) => (
+              <div class="relative flex flex-col p-6 overflow-hidden transition-all transform ring-1 dark:ring-base-800 shadow   rounded-2xl bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950        ring-base-200      ring-inset group hover:shadow-light   dark:hover:shadow-dark">
+                <dt>
+                  <Text
+                    tag="h3"
+                    variant="textLG"
+                    class="dark:text-white text-base-900    "
+                  >
+                    {feature.title}
+                  </Text>
+                </dt>
+                <dd class="mt-24 ">
+                  <Text
+                    tag="p"
+                    variant="textLG"
+                    class=" dark:text-base-400 text-base-600"
+                  >
+                    {feature.description}
+                  </Text>
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
       </div>
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>

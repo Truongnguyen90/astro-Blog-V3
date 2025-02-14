@@ -1,27 +1,36 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
 <section>
-  <div class="px-8 py-24 mx-auto">
-    <div class="text-center max-w-xl mx-auto">
-      <h1 class="text-4xl tracking-tight text-balance text-white md:text-6xl">
+  <Wrapper variant="standard" class="py-24">
+    <div class="text-center">
+      <Text
+        tag="h1"
+        variant="displayXL"
+        class="text-balance dark:text-white text-base-900"
+      >
         Sign up to
-        <span class="font-display italic font-light tracking-wide block">
-          Flaco
-        </span>
-      </h1>
-      <p class="mt-4 text-base font-medium text-zinc-400 text-balance">
+        <span class="font-display italic tracking-wide"> Flaco </span>
+      </Text>
+      <Text
+        tag="p"
+        variant="textLG"
+        class="mt-4 dark:text-base-400 text-base-600 text-balance"
+      >
         Create your account and manage all your to-do lists and tasks in one
         place from the dashboard.
-      </p>
+      </Text>
     </div>
 
-    <form class="mt-6 max-w-sm mx-auto">
+    <form class="mt-6">
       <div class="grid grid-cols-1 gap-2">
         <!-- Email Field -->
         <div>
-          <label
-            for="email"
-            class="sr-only"
-            >Email</label
-          >
+          <label for="email" class="sr-only">Email</label>
           <div>
             <input
               type="email"
@@ -29,17 +38,13 @@
               id="email"
               placeholder="Enter your email"
               autocomplete="email"
-              class="w-full flex-auto appearance-none rounded-full text-center ring-1 ring-zinc-800 text-white ring-inset border-transparent px-3 py-[calc(theme(spacing.2)-1px)] shadow-3xl shadow-zinc-800/5 placeholder:text-zinc-400 duration-300 h-9 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10 sm:text-sm bg-zinc-700/[0.15]"
+              class="w-full flex-auto appearance-none rounded-full text-center outline outline-base-200 dark:outline-base-800 dark:text-white text-base-900 outline-inset border-transparent px-3 py-2 shadow-base-800/5 dark:placeholder:text-base-400 dark:place-holder-text-base-600 duration-300 h-10 focus:border-base-500 focus:outline-none focus:outline-4 focus:outline-base-500/10 sm:text-sm bg-base-50 dark:bg-base-800"
             />
           </div>
         </div>
         <!-- Password Field -->
         <div>
-          <label
-            for="password"
-            class="sr-only"
-            >Password</label
-          >
+          <label for="password" class="sr-only">Password</label>
           <div>
             <input
               type="password"
@@ -47,83 +52,53 @@
               id="password"
               placeholder="Enter your password"
               autocomplete="current-password"
-              class="w-full flex-auto appearance-none rounded-full text-center ring-1 ring-zinc-800 text-white ring-inset border-transparent px-3 py-[calc(theme(spacing.2)-1px)] shadow-3xl shadow-zinc-800/5 placeholder:text-zinc-400 duration-300 h-9 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10 sm:text-sm bg-zinc-700/[0.15]"
+              class="w-full flex-auto appearance-none rounded-full text-center outline outline-base-200 dark:outline-base-800 dark:text-white text-base-900 outline-inset border-transparent px-3 py-2 shadow-base-800/5 dark:placeholder:text-base-400 dark:place-holder-text-base-600 duration-300 h-10 focus:border-base-500 focus:outline-none focus:outline-4 focus:outline-base-500/10 sm:text-sm bg-base-50 dark:bg-base-800"
             />
           </div>
-          <p class="mt-2 text-xs text-zinc-400">
+          <Text
+            tag="p"
+            variant="textXS"
+            class="mt-2 dark:text-base-400 text-base-600"
+          >
             Use at least 8 characters, 1 uppercase, 1 lowercase, 1 digit, and 1
             special character for your password.
-          </p>
+          </Text>
         </div>
       </div>
-      <div
-        class="flex flex-wrap gap-4 justify-between items-center py-4 max-w-sm mx-auto">
-        <div class="flex items-center">
-          <input
-            type="checkbox"
-            name="terms"
-            id="terms"
-            class="rounded border-zinc-200 text-blue-400 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-zinc-900 dark:border-zinc-700"
-          />
-          <label
-            for="terms"
-            class="ml-2 block text-sm leading-5 text-zinc-400">
-            I agree
-          </label>
-        </div>
-        <a
-          class="hover:text-blue-400 flex items-center text-sm gap-2 group text-zinc-400"
-          href="/forms/reset"
-          >Forgot your password? <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right size-4 group-hover:translate-x-2 duration-300"
-            ><path
-              stroke="none"
-              d="M0 0h24v24H0z"
-              fill="none"
-            ></path><path d="M9 6l6 6l-6 6"></path></svg
-          ></a
+
+      <div class="flex items-center py-4">
+        <input
+          type="checkbox"
+          name="terms"
+          id="terms"
+          class="rounded border-base-200 dark:text-base-400 text-base-600 bg-white shadow-sm focus:border-base-300 focus:ring focus: ring-base-200 focus:ring-opacity-50 dark:bg-base-900 dark:border-base-700"
+        />
+        <label
+          for="terms"
+          class="ml-2 block text-sm leading-5 dark:text-base-400 text-base-600"
         >
+          I agree
+        </label>
       </div>
+
       <!-- Submit Button -->
-      <div class="mt-2 max-w-sm mx-auto">
-        <button
-          type="submit"
-          class="rounded-full bg-white px-4 flex justify-center gap-1 items-center py-2.5 h-9 text-sm font-semibold text-black hover:bg-zinc-200 duration-300 ring-1 ring-inset ring-zinc-200 group w-full"
-          >Sign In</button
-        >
+      <div class="mt-2">
+        <Button type="submit" size="base" variant="default" class="w-full"
+          >Sign up
+        </Button>
       </div>
     </form>
-    <div
-      class="flex flex-wrap gap-4 justify-between items-center mt-2 max-w-sm mx-auto">
-      <p class="text-sm text-zinc-400">
-        Already have an account?
-      </p>
-      <a
-        class="hover:text-blue-400 flex items-center text-sm gap-2 group text-zinc-400"
-        href="/forms/signin"
-        >Sign in instead <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right size-4 group-hover:translate-x-2 duration-300"
-          ><path
-            stroke="none"
-            d="M0 0h24v24H0z"
-            fill="none"
-          ></path><path d="M9 6l6 6l-6 6"></path></svg
-        ></a
+    <div class="flex flex-wrap gap-4 justify-between items-center mt-2">
+      <Text tag="p" variant="textSM" class="dark:text-base-400 text-base-600"
+        >Already have an account?</Text
+      >
+      <Text
+        tag="a"
+        variant="textXS"
+        underlined={true}
+        class="text-white"
+        href="/forms/signup">Sign in instead</Text
       >
     </div>
-  </div>
+  </Wrapper>
 </section>

@@ -1,0 +1,57 @@
+---
+// Logo Component This component renders an SVG logo and accepts props for customization.
+// Props: - class: A string of additional classes to style the SVG.
+// - ...rest: Any other valid attributes for an <svg> element (e.g., id, style, role, aria-label, etc.).
+// Example Usage: <Logo class="my-custom-class" /> or <Logo id="logo-id" style="width: 50px; height: 50px;" />
+const { class: className = "", ...rest } = Astro.props;
+---
+
+<button
+  class={className}
+  {...rest}
+  role="switch"
+  aria-checked="false"
+  id="theme-toggle"
+>
+  <!-- Single SVG Icon -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    viewBox="0 0 256 256"
+    class="dark:text-white text-base-900 size-5"
+    ><path
+      d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,16.37a86.4,86.4,0,0,1,16,3V212.67a86.4,86.4,0,0,1-16,3Zm32,9.26a87.81,87.81,0,0,1,16,10.54V195.83a87.81,87.81,0,0,1-16,10.54ZM40,128a88.11,88.11,0,0,1,80-87.63V215.63A88.11,88.11,0,0,1,40,128Zm160,50.54V77.46a87.82,87.82,0,0,1,0,101.08Z"
+    ></path></svg
+  >
+</button>
+
+<script>
+  const toggle = document.getElementById("theme-toggle");
+
+  function updateTheme(isDark) {
+    // Toggle dark mode class on the root HTML element
+    document.documentElement.classList.toggle("dark", isDark);
+    toggle.setAttribute("aria-checked", isDark ? "true" : "false");
+    // Save the user's theme preference in localStorage
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }
+
+  // Initialize theme based on localStorage or system preference
+  function initializeTheme() {
+    const savedTheme = localStorage.getItem("theme");
+    const systemPrefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    const isDark = savedTheme ? savedTheme === "dark" : systemPrefersDark;
+    updateTheme(isDark);
+  }
+
+  // Run initialization when page loads
+  initializeTheme();
+
+  // Handle toggle click event
+  toggle.addEventListener("click", () => {
+    const isDark = toggle.getAttribute("aria-checked") === "true";
+    updateTheme(!isDark);
+  });
+</script>

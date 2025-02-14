@@ -1,0 +1,81 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-24">
+      <Text
+        tag="h1"
+        variant="displayXL"
+        class="mt-12 dark:text-white text-base-900 text-balance font-display"
+        >Buttons</Text
+      >
+      <div class="flex flex-col mt-12 lg:col-span-3">
+        <div class="py-4">
+          <Text
+            tag="p"
+            variant="textXS"
+            class="text-white uppercase font-medium"
+          >
+            Default
+          </Text>
+          <div class="mt-4 flex flex-wrap gap-4 items-center">
+            <Button size="xs" variant="default">Default XS</Button>
+            <Button size="sm" variant="default">Default SM</Button>
+            <Button size="base" variant="default">Default Base</Button>
+            <Button size="md" variant="default">Default MD</Button>
+            <Button size="lg" variant="default">Default LG</Button>
+            <Button size="xl" variant="default">Default XL</Button>
+          </div>
+        </div>
+        <div class="py-4">
+          <Text
+            tag="p"
+            variant="textXS"
+            class="text-white uppercase font-medium"
+          >
+            Accent
+          </Text>
+          <div class="mt-4 flex flex-wrap gap-4 items-center">
+            <Button size="xs" variant="accent">Accent XS</Button>
+            <Button size="sm" variant="accent">Accent SM</Button>
+            <Button size="base" variant="accent">Accent Base</Button>
+            <Button size="md" variant="accent">Accent MD</Button>
+            <Button size="lg" variant="accent">Accent LG</Button>
+            <Button size="xl" variant="accent">Accent XL</Button>
+          </div>
+        </div>
+        <div class="py-4">
+          <Text
+            tag="p"
+            variant="textXS"
+            class="text-white uppercase font-medium"
+          >
+            Muted
+          </Text>
+          <div class="mt-4 flex flex-wrap gap-4 items-center">
+            <Button size="xs" variant="muted">Muted XS</Button>
+            <Button size="sm" variant="muted">Muted SM</Button>
+            <Button size="base" variant="muted">Muted Base</Button>
+            <Button size="md" variant="muted">Muted MD</Button>
+            <Button size="lg" variant="muted">Muted LG</Button>
+            <Button size="xl" variant="muted">Muted XL</Button>
+          </div>
+        </div>
+        <div>
+          <a href="#" class="relative group">
+            <span class="text-white">Hover me</span>
+            <span
+              class="absolute left-0 bottom-0 w-full h-0.5 bg-white scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"
+            ></span>
+          </a>
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

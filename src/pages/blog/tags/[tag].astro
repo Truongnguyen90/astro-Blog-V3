@@ -1,6 +1,11 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import EntriesTwo from "@/components/blog/EntriesTwo.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import Entries2 from "@/components/blog/BlogEntries2.astro";
+// Content
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const allPosts = await getCollection("posts");
@@ -20,39 +25,31 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
-
-<BaseLayout pageTitle={tag}>
+<BaseLayout>
   <section>
-    <div class="px-8 py-24 mx-auto">
-      <div class="text-center max-w-xl mx-auto">
-        <h1
-          class="text-4xl tracking-tight text-balance text-white md:text-6xl">
+    <Wrapper class="py-24">
+      <div class="text-center">
+        <Text
+          tag="h1"
+          variant="displayXL"
+          class="text-balance dark:text-white text-base-900"
+        >
           Blog posts
-          <span class="font-display italic font-light tracking-wide block">
+          <span class="font-display italic tracking-wide block">
             tagged with {tag}
           </span>
-        </h1>
-        <p class="mt-4 text-base font-medium text-zinc-400 text-balance">
+        </Text>
+        <Text
+          tag="p"
+          variant="textLG"
+          class="mt-4 dark:text-base-400 text-base-600"
+        >
           Find all the posts tagged with {tag}.
-        </p>
+        </Text>
       </div>
-      <ul class="max-w-xl mx-auto mt-6 grid md:grid-cols-2 gap-2">
-        {
-          posts.map((post) => (
-            <li>
-              <EntriesTwo
-                url={"/blog/posts/" + post.slug}
-                title={post.data.title}
-                description={post.data.description}
-                alt={post.data.title}
-                pubDate={post.data.pubDate.toString().slice(0, 10)}
-                author={post.data.author}
-                image={post.data.image.url}
-              />
-            </li>
-          ))
-        }
+      <ul class="mt-12 grid md:grid-cols-2 gap-2">
+        {posts.map((post) => <Entries2 post={post} />)}
       </ul>
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>

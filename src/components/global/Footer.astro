@@ -1,14 +1,27 @@
+---
+// Assets
+import Logo from "@/components/assets/logo.astro";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
 <footer x-data="{ year: new Date().getFullYear() }">
-  <div class="max-w-xl mx-auto px-8 py-24 flex flex-col">
-    <p class="text-xs leading-5 text-zinc-400 text-center text-balance">
+  <Wrapper class="py-24 flex flex-col"
+    >.
+    <a href="/"><Logo class="size-8 dark:text-white text-base-900 mx-auto" /></a
+    >
+    <Text
+      tag="p"
+      variant="textBase"
+      class="mt-12 leading-6 dark:text-base-400 text-base-600 text-center text-balance"
+    >
       © Copyright Lexington Themes <span x-text="year"></span>. All rights
       reserved. Designed and built in the Åland Islands by Michael Andreuzza.
-    </p>
+    </Text>
 
-    <div class="flex justify-center space-x-6 mt-6">
-      <a
-        href="#"
-        class="text-zinc-400 hover:text-zinc-500">
+    <div class="flex justify-center space-x-6 mt-12">
+      <a href="#" class="dark:text-base-400 text-base-600 hover:text-white 0">
         <span class="sr-only">x</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -19,17 +32,12 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x size-4"
-          ><path
-            stroke="none"
-            d="M0 0h24v24H0z"
-            fill="none"
-          ></path><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path
+          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path
             d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg
         >
       </a>
-      <a
-        href="#"
-        class="text-zinc-400 hover:text-zinc-500">
+      <a href="#" class="dark:text-base-400 text-base-600 hover:text-white 0">
         <span class="sr-only">YouTube</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -40,23 +48,16 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube size-4"
-          ><path
-            stroke="none"
-            d="M0 0h24v24H0z"
-            fill="none"
-          ></path><path
+          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
             d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z"
           ></path><path d="M10 9l5 3l-5 3z"></path></svg
         >
       </a>
 
-      <a
-        href="#"
-        class="text-zinc-400 hover:text-zinc-500">
+      <a href="#" class="dark:text-base-400 text-base-600 hover:text-white 0">
         <span class="sr-only">GitHub</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -64,16 +65,11 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github size-4"
-          ><path
-            stroke="none"
-            d="M0 0h24v24H0z"
-            fill="none"
-          ></path><path
+          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
             d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
           ></path></svg
         >
       </a>
-
     </div>
-  </div>
+  </Wrapper>
 </footer>

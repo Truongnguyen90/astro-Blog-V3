@@ -1,0 +1,103 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Link from "@/components/fundations/elements/Link.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-24">
+      <Text
+        tag="h1"
+        variant="displayXL"
+        class="mt-12 dark:text-white text-base-900 text-balance font-display"
+        >Links</Text
+      >
+      <div class="flex flex-col mt-12 lg:col-span-3">
+        <div class="py-4">
+          <Text
+            tag="p"
+            variant="textXS"
+            class="text-white uppercase font-medium"
+          >
+            Underlined link on hover
+          </Text>
+          <div class="mt-4 flex flex-wrap gap-4 items-center">
+            <Text
+              tag="a"
+              variant="textSM"
+              underlined={true}
+              title="link to your page"
+              aria-label="your label"
+              href="/system/overview"
+              class="duration-300 dark:text-white text-base-900"
+            >
+              Underlined Link
+            </Text>
+          </div>
+        </div>
+        <div class="py-4">
+          <Text
+            tag="p"
+            variant="textXS"
+            class="text-white uppercase font-medium"
+          >
+            Default
+          </Text>
+          <div class="mt-4 flex flex-wrap gap-4 items-center">
+            <Link href="#_" size="xs" variant="default">Default XS</Link>
+            <Link href="#_" size="sm" variant="default">Default SM</Link>
+            <Link href="#_" size="base" variant="default">Default Base</Link>
+            <Link href="#_" size="md" variant="default">Default MD</Link>
+            <Link href="#_" size="lg" variant="default">Default LG</Link>
+            <Link href="#_" size="xl" variant="default">Default XL</Link>
+          </div>
+        </div>
+        <div class="py-4">
+          <Text
+            tag="p"
+            variant="textXS"
+            class="text-white uppercase font-medium"
+          >
+            Accent
+          </Text>
+          <div class="mt-4 flex flex-wrap gap-4 items-center">
+            <Link href="#_" size="xs" variant="accent">Accent XS</Link>
+            <Link href="#_" size="sm" variant="accent">Accent SM</Link>
+            <Link href="#_" size="base" variant="accent">Accent Base</Link>
+            <Link href="#_" size="md" variant="accent">Accent MD</Link>
+            <Link href="#_" size="lg" variant="accent">Accent LG</Link>
+            <Link href="#_" size="xl" variant="accent">Accent XL</Link>
+          </div>
+        </div>
+        <div class="py-4">
+          <Text
+            tag="p"
+            variant="textXS"
+            class="text-white uppercase font-medium"
+          >
+            Muted
+          </Text>
+          <div class="mt-4 flex flex-wrap gap-4 items-center">
+            <Link href="#_" size="xs" variant="muted">Muted XS</Link>
+            <Link href="#_" size="sm" variant="muted">Muted SM</Link>
+            <Link href="#_" size="base" variant="muted">Muted Base</Link>
+            <Link href="#_" size="md" variant="muted">Muted MD</Link>
+            <Link href="#_" size="lg" variant="muted">Muted LG</Link>
+            <Link href="#_" size="xl" variant="muted">Muted XL</Link>
+          </div>
+        </div>
+        <div>
+          <a href="#" class="relative group">
+            <span class="text-white">Hover me</span>
+            <span
+              class="absolute left-0 bottom-0 w-full h-0.5 bg-white scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"
+            ></span>
+          </a>
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

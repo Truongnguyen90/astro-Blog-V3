@@ -1,0 +1,31 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import StackEntries2 from "@/components/stack/StackEntries2.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-24">
+      <div class="text-center">
+        <Text tag="h1" variant="displayXL" class="text-white text-balance">
+          Software I use daily
+          <span class="italic tracking-wide font-display"> and recommend </span>
+        </Text>
+        <Text
+          tag="p"
+          variant="textLG"
+          class="mt-4 dark:text-base-400 text-base-600"
+        >
+          I get askeed about the tools that I use daily and be productive. Here
+          is a list of my favorite software programs, gadgets, and other
+          recommendations.
+        </Text>
+      </div>
+      <StackEntries2 />
+    </Wrapper>
+  </section>
+</BaseLayout>

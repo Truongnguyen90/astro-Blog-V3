@@ -1,0 +1,84 @@
+---
+const {
+  variant = "default",
+  size = "base",
+  onlyIconSize,
+  gap = "base",
+  class: className,
+  ...rest
+} = Astro.props;
+// Default
+const defaultClass = [
+  "text-white dark:text-base-900  ",
+  "bg-black dark:bg-white",
+  "focus:outline-black dark:focus:outline-white",
+];
+// Accent
+const accentClass = [
+  "text-white dark:text-base-900  ",
+  "bg-accent-600 dark:bg-accent-500",
+  "focus:outline-accent-600 dark:focus:outline-accent-600",
+];
+// Muted
+const mutedClass = [
+  "text-base-500 dark:text-white",
+  "bg-base-50 dark:bg-base-800",
+  "focus:outline-base-500 dark:focus:outline-base-800",
+];
+const sizes = {
+  xs: ["h-8", "px-4", "py-2", "text-xs"],
+  sm: ["h-9", "px-4", "py-2", "text-xs"],
+  base: ["h-10", "px-6", "py-3", "text-base"],
+  md: ["h-11", "px-6", "py-3", "text-md"],
+  lg: ["h-12", "px-6", "py-3", "text-lg"],
+  xl: ["h-14", "px-6", "py-3", "text-base"],
+};
+const gaps = {
+  xs: ["gap-2"],
+  sm: ["gap-4"],
+  base: ["gap-8"],
+  md: ["gap-10"],
+  lg: ["gap-12"],
+};
+const additionalClasses = className ? className.split(" ") : [];
+---
+
+<button
+  class:list={[
+    "font-medium",
+    "group",
+    "relative",
+    "flex",
+    "transition",
+    "text-center",
+    "outline-transparent",
+    "rounded-full",
+    "items-center",
+    "justify-center",
+    "duration-500",
+    "ease-in-out",
+    "transition-colors",
+    "focus:outline-2",
+    "outline-offset-2",
+    "overflow-hidden",
+    variant === "default" && defaultClass,
+    variant === "accent" && accentClass,
+    variant === "muted" && mutedClass,
+    variant === "none" && [], // No additional classes for "none" variant
+    sizes[size],
+    gaps[gap],
+    ...additionalClasses,
+  ]}
+  {...rest}
+>
+  <span class="relative z-10 flex items-center">
+    <slot name="left-icon" />
+    <slot />
+    <slot name="right-icon" />
+  </span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-8 bg-white/20"></div>
+  </div>
+</button>

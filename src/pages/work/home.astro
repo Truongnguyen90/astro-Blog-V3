@@ -1,80 +1,39 @@
 ---
-import { getCollection } from "astro:content";
-const allwork = await getCollection("work");
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import WorkEntries from "@/components/work/WorkEntries.astro";
-// Define the logos data
-const logos = [
-  "/assets/logos/1.svg",
-  "/assets/logos/2.svg",
-  "/assets/logos/3.svg",
-  "/assets/logos/4.svg",
-  "/assets/logos/5.svg",
-  "/assets/logos/6.svg",
-  "/assets/logos/1.svg",
-  "/assets/logos/2.svg",
-  "/assets/logos/3.svg",
-  "/assets/logos/4.svg",
-  "/assets/logos/5.svg",
-  "/assets/logos/6.svg",
-  // Add more logo paths as needed
-];
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import WorkEntries1 from "@/components/work/WorkEntries1.astro";
+// Content
+import { getCollection } from "astro:content";
+const allWork = await getCollection("work");
+// Assets
+import LogoCloud from "@/components/assets/LogoCloud.astro";
 ---
+
 <BaseLayout>
   <section>
-    <div class="px-8 py-24 mx-auto">
-      <div class="max-w-md lg:max-w-lg mx-auto">
-        <div class="text-center">
-          <h1
-            class="text-4xl tracking-tight text-balance text-white md:text-6xl">
-            Check out my <span
-              class="font-display italic font-light tracking-wide">
-              client work
-            </span>
-          </h1>
-          <p class="mt-4 text-base font-medium text-zinc-400 text-balance">
-            Hire me to build your next project from scratch, with a focus on
-            design and development.
-          </p>
-          <div
-            class="relative mx-auto mt-12 overflow-hidden overflow-x-hidden py-2">
-            <div class="w-full justify-between grid">
-              <div
-                class="absolute inset-0 from-zinc-950 left-0 via-transparent w-44 z-10 bg-gradient-to-r">
-              </div>
-              <div
-                class="absolute inset-0 from-zinc-950 left-0 via-transparent w-44 z-10 bg-gradient-to-l ml-auto">
-              </div>
-            </div>
-            <div
-              class="items-center relative animate-marquee flex font-black i gap-4 font-display tracking-widest uppercase whitespace-nowrap">
-              {
-                logos.map((logo) => (
-                  <img
-                    class="h-8"
-                    src={logo}
-                    alt={logo}
-                  />
-                ))
-              }
-            </div>
-          </div>
-        </div>
+    <Wrapper variant="standard" class="py-24">
+      <div class="text-center">
+        <Text tag="h1" variant="displayXL" class="text-white text-balance">
+          Check out my <span class="italic tracking-wide font-display">
+            portfolio
+          </span>
+        </Text>
+        <Text
+          tag="p"
+          variant="textLG"
+          class="mt-4 dark:text-base-400 text-base-600 text-balance"
+        >
+          Hire me to build your next project from scratch, with a focus on
+          design and development.
+        </Text>
       </div>
-      <ul
-        role="list"
-        class="grid sm:grid-cols-2 gap-2 mt-6 max-w-xl mx-auto">
-        {
-          allwork.map((post) => (
-            <WorkEntries
-              url={"/work/" + post.slug}
-              subtitle={post.data.subtitle}
-              title={post.data.title}
-              pubDate={post.data.pubDate.toString().slice(10, 15)}
-            />
-          ))
-        }
-      </ul>
-    </div>
+      <LogoCloud />
+      <div role="list" class="grid gap-2 mt-12 sm:grid-cols-2">
+        {allWork.map((post) => <WorkEntries1 post={post} />)}
+      </div>
+    </Wrapper>
   </section>
 </BaseLayout>

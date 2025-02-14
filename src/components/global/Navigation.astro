@@ -1,77 +1,215 @@
-<div>
-  <div
-    class="w-full mx-auto max-w-lg px-8 lg:px-0 flex flex-col lg:flex-row lg:items-center lg:justify-between py-3"
-    x-data="{ open: false }">
-    <div class="flex flex-row items-center justify-between text-white">
-      <a
-        href="/"
-        title="link to your page"
-        aria-label="your label"
-        class="items-center inline-flex"
-        >Flaco
-      </a><button
-        class="focus:shadow-outline focus:outline-none lg:hidden rounded-lg"
-        @click="open = !open"
-        ><svg
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          ><path
-            d="M4 6h16M4 12h16M4 18h16"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            :class="{'hidden': open, 'inline-flex': !open }"
-            class="inline-flex"
-          ></path><path
-            d="M6 18L18 6M6 6l12 12"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            :class="{'hidden': !open, 'inline-flex': open }"
-            class="hidden"
-          ></path></svg
-        ></button
-      >
-    </div>
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Link from "@/components/fundations/elements/Link.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import ThemeToggle from "@/components/assets/ThemeToggle.astro";
+// Navigation links
+const navLinks = [
+  {
+    text: "Overview",
+    href: "/system/overview",
+    classes: "hover:text-base-900   duration-300",
+  },
+  {
+    text: "Colors",
+    href: "/system/colors",
+  },
+  {
+    text: "Links",
+    href: "/system/link",
+  },
+  {
+    text: "Buttons",
+    href: "/system/buttons",
+  },
+  {
+    text: "Typography",
+    href: "/system/typography",
+  },
+  {
+    text: "Blog",
+    href: "/blog/home-two",
+  },
+  {
+    text: "Store",
+    href: "/store/home",
+  },
+  {
+    text: "Projects",
+    href: "/projects/home",
+  },
+  {
+    text: "Studio",
+    href: "/studio",
+  },
+];
+---
+
+<style>
+  .overflow-hidden-no-shift {
+    overflow: hidden;
+    padding-right: calc(100vw - 100%);
+  }
+</style>
+<header>
+  <Wrapper variant="standard">
     <nav
-      :class="{'flex': open, 'hidden': !open}"
-      class="items-center text-sm flex-grow flex-col hidden gap-y-4 lg:flex dark:text-zinc-400 lg:flex-row text-zinc-500 lg:justify-start py-1 opacity-100 gap-x-4">
-      <a
-        href="/system/overview"
-        title="link to your page"
-        aria-label="your label"
-        class="hover:text-blue-400 flex items-center gap-2 group text-zinc-400 ml-auto"
-        >Overview
-      </a><a
-        href="/system/styleguide"
-        title="link to your page"
-        aria-label="your label"
-        class="hover:text-blue-400 flex items-center gap-2 group text-zinc-400"
-        >Style Guide
-      </a>
-      <a
-        href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU"
-        title="link to your page"
-        aria-label="your label"
-        class="rounded-full bg-white px-4 flex justify-center gap-1 items-center py-2.5 h-8 text-sm font-semibold text-black hover:bg-zinc-200 duration-300 ring-1 ring-inset ring-zinc-200 group"
-        >Buy Flaco <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right size-4 group-hover:translate-x-2 duration-300"
-          ><path
-            stroke="none"
-            d="M0 0h24v24H0z"
-            fill="none"
-          ></path><path d="M9 6l6 6l-6 6"></path></svg
+      role="navigation"
+      class="grid grid-cols-2 items-center justify-between w-full gap-12 py-4"
+    >
+      <div
+        class="flex flex-row items-center gap-2 order-last md:order-first w-full"
+      >
+        <Text
+          tag="a"
+          variant="textXL"
+          href="/"
+          class="font-display italic text-center text-base-900 dark:text-white"
+          >Jarvis</Text
         >
-      </a>
+        <ThemeToggle class="order-first md:order-last" />
+      </div>
+
+      <div class="flex flex-row items-center gap-2 ml-auto">
+        <Text
+          tag="a"
+          variant="textSM"
+          underlined={true}
+          title="link to your page"
+          aria-label="your label"
+          href="/system/overview"
+          class="duration-300 font-medium dark:text-white text-base-900"
+        >
+          Overview
+        </Text>
+        <Link
+          size="xs"
+          variant="default"
+          title="link to your page"
+          aria-label="your label"
+          href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU"
+        >
+          Buy Flaco
+        </Link>
+        <div class="relative">
+          <button
+            type="button"
+            id="menuToggle"
+            id="menubutton"
+            aria-controls="menu"
+            aria-expanded="false"
+            aria-label="Toggle menu"
+            class="focus-visible:outline-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-list-tree transition duration-300 ease-in-out text-base-900 dark:text-white size-6 shrink-0"
+              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                d="M9 6h11"></path><path d="M12 12h8"></path><path d="M15 18h5"
+              ></path><path d="M5 6v.01"></path><path d="M8 12v.01"></path><path
+                d="M11 18v.01"></path></svg
+            >
+          </button>
+          <div
+            id="menuContent"
+            class="fixed inset-0 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none z-9999 bg-white/20 dark:bg-black/50 backdrop-blur-xl"
+          >
+            <Wrapper variant="standard" class="relative h-full px-8 py-4">
+              <button id="closeMenu" class="flex text-base-900 dark:text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="transition duration-300 ease-in-out size-8 shrink-0 stroke-base-950 dark:stroke-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M6 6l12 12"></path>
+                  <path d="M6 18l12 -12"></path>
+                </svg>
+              </button>
+              <nav role="navigation" class="flex flex-col gap-2 mt-4">
+                {
+                  navLinks.map((link) => (
+                    <div class="flex">
+                      <Text
+                        tag="a"
+                        variant="textLG"
+                        underlined={true}
+                        href={link.href}
+                        title={link.text}
+                        aria-label={link.text}
+                        class=" dark:text-white text-base-900    w-auto    "
+                      >
+                        {link.text}
+                      </Text>
+                    </div>
+                  ))
+                }
+              </nav>
+            </Wrapper>
+          </div>
+        </div>
+      </div>
     </nav>
-  </div>
-</div>
+  </Wrapper>
+</header>
+
+<script type="module">
+  // Wait for the DOM content to fully load before executing the script
+  document.addEventListener("DOMContentLoaded", (event) => {
+    // Get references to the menu toggle button, menu content, and close button
+    const menuToggle = document.getElementById("menuToggle");
+    const menuContent = document.getElementById("menuContent");
+    const closeMenu = document.getElementById("closeMenu");
+    // Function to toggle the visibility of the menu
+    function toggleMenu() {
+      // Check if the menu is currently closed (based on the presence of a specific class)
+      const isOpening = menuContent.classList.contains("opacity-0");
+      // Toggle classes to show/hide the menu
+      menuContent.classList.toggle("opacity-0"); // Controls the opacity of the menu
+      menuContent.classList.toggle("pointer-events-none"); // Toggles pointer event handling for the menu
+      document.body.classList.toggle("overflow-hidden-no-shift"); // Toggles overflow behavior for the body element
+      // If the menu is opening, reset and animate its links
+      if (isOpening) {
+        setTimeout(() => resetAndAnimateLinks(), 10); // Delay to ensure animations are applied correctly
+      }
+    }
+    // Function to reset and apply animations to the navigation links
+    function resetAndAnimateLinks() {
+      // Select all anchor links inside the navigation
+      const navLinks = document.querySelectorAll("nav a");
+      // Loop through each link to reset its styles and apply animations
+      navLinks.forEach((link, index) => {
+        // Reset the opacity and position of each link to an initial state
+        link.style.opacity = "0";
+        link.style.transform = "translateY(20px)";
+        link.style.transition = "none"; // Remove any pre-existing transitions
+        // Apply a delayed animation to each link
+        setTimeout(() => {
+          // Set transition styles for opacity and position, with a delay based on the index
+          link.style.transition = `opacity 0.3s ease-out ${index * 0.1}s, transform 0.3s ease-out ${index * 0.1}s`;
+          link.style.opacity = "1"; // Fade the link in
+          link.style.transform = "translateY(0)"; // Move the link back to its original position
+        }, 50);
+      });
+    }
+    // Attach the toggleMenu function to the menu toggle button's click event
+    menuToggle.addEventListener("click", toggleMenu);
+    // Attach the toggleMenu function to the close button's click event
+    closeMenu.addEventListener("click", toggleMenu);
+  });
+</script>
