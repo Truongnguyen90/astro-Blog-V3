@@ -59,9 +59,7 @@ const navLinks = [
       role="navigation"
       class="grid grid-cols-2 items-center justify-between w-full gap-12 py-4"
     >
-      <div
-        class="flex flex-row items-center gap-2 order-last md:order-first w-full"
-      >
+      <div class="flex flex-row items-center gap-2">
         <Text
           tag="a"
           variant="textXL"
@@ -94,75 +92,76 @@ const navLinks = [
         >
           Buy Flaco
         </Link>
-        <div class="relative">
-          <button
-            type="button"
-            id="menuToggle"
-            id="menubutton"
-            aria-controls="menu"
-            aria-expanded="false"
-            aria-label="Toggle menu"
-            class="focus-visible:outline-none"
+        <button
+          type="button"
+          id="menuToggle"
+          id="menubutton"
+          aria-controls="menu"
+          aria-expanded="false"
+          aria-label="Toggle menu"
+          class="focus-visible:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-list-tree transition duration-300 ease-in-out text-base-900 dark:text-white size-6 shrink-0"
+            ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+              d="M9 6h11"></path><path d="M12 12h8"></path><path d="M15 18h5"
+            ></path><path d="M5 6v.01"></path><path d="M8 12v.01"></path><path
+              d="M11 18v.01"></path></svg
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-list-tree transition duration-300 ease-in-out text-base-900 dark:text-white size-6 shrink-0"
-              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M9 6h11"></path><path d="M12 12h8"></path><path d="M15 18h5"
-              ></path><path d="M5 6v.01"></path><path d="M8 12v.01"></path><path
-                d="M11 18v.01"></path></svg
+        </button>
+        <div
+          id="menuContent"
+          class="fixed inset-0 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none z-9999 bg-white/20 dark:bg-black/50 backdrop-blur-xl"
+        >
+          <Wrapper variant="standard" class="relative h-full px-8 py-4">
+            <button
+              id="closeMenu"
+              class="flex text-base-900 dark:text-white ml-auto"
             >
-          </button>
-          <div
-            id="menuContent"
-            class="fixed inset-0 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none z-9999 bg-white/20 dark:bg-black/50 backdrop-blur-xl"
-          >
-            <Wrapper variant="standard" class="relative h-full px-8 py-4">
-              <button id="closeMenu" class="flex text-base-900 dark:text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="transition duration-300 ease-in-out size-8 shrink-0 stroke-base-950 dark:stroke-white"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M6 6l12 12"></path>
-                  <path d="M6 18l12 -12"></path>
-                </svg>
-              </button>
-              <nav role="navigation" class="flex flex-col gap-2 mt-4">
-                {
-                  navLinks.map((link) => (
-                    <div class="flex">
-                      <Text
-                        tag="a"
-                        variant="textLG"
-                        underlined={true}
-                        href={link.href}
-                        title={link.text}
-                        aria-label={link.text}
-                        class=" dark:text-white text-base-900    w-auto    "
-                      >
-                        {link.text}
-                      </Text>
-                    </div>
-                  ))
-                }
-              </nav>
-            </Wrapper>
-          </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="transition duration-300 ease-in-out size-8 shrink-0 stroke-base-950 dark:stroke-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 6l12 12"></path>
+                <path d="M6 18l12 -12"></path>
+              </svg>
+            </button>
+            <nav role="navigation" class="flex flex-col gap-y-2 mt-4">
+              {
+                navLinks.map((link) => (
+                  <div class="flex justify-end">
+                    <Text
+                      tag="a"
+                      variant="textXL"
+                      underlined={true}
+                      href={link.href}
+                      title={link.text}
+                      aria-label={link.text}
+                      class="block text-right dark:text-white text-base-900"
+                    >
+                      {link.text}
+                    </Text>
+                  </div>
+                ))
+              }
+            </nav>
+          </Wrapper>
         </div>
       </div>
     </nav>
