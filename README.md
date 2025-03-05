@@ -39,6 +39,11 @@ All commands are run from the root of the project, from a terminal:
 Learn more - Explore more through Astro's official [documentation](https://docs.astro.build).
 
 ------
+Updated on 05th March 2025
+
+## This update includes:
+- Added search on blog with FuseJS
+------
 Updated on 14th February 2025
 
 ## This update includes:
