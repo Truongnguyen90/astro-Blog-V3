@@ -91,42 +91,45 @@ const stack = [
         class="flex gap-2 py-12 dark:border-base-700 animatemarquee"
       >
         {section.items.map((item) => (
-          <div
-            class={`flex flex-col ring-1 shadow   justify-between w-full min-h-72 min-w-72 p-6 rounded-2xl relative overflow-hidden h-full bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950       ring-base-200     dark:ring-base-800  ring-inset group   dark:hover:shadow-dark transform transition-all group ${item.rotation}`}
-          >
-            <div class="flex items-center justify-between gap-x-4">
-              <div>
-                <Text
-                  tag="h3"
-                  variant="textBase"
-                  class="font-medium dark:text-white text-base-900    "
-                >
-                  {item.name}
-                </Text>
-                <Text
-                  tag="p"
-                  variant="textSM"
-                  class="      dark:text-base-400 text-base-600"
-                >
-                  {item.about}
-                </Text>
-              </div>
-              <img
-                src={item.stackLogo}
-                alt={item.name}
-                class="duration-300 size-8 rounded-xl dark:border dark:border-base-700 group-hover:-rotate-45"
-              />
-            </div>
-            <Text
-              tag="p"
-              variant="textBase"
-              class="mt-2 text-base  dark:text-base-400 text-base-600"
+          <div role="listitem" class="min-h-72 min-w-72 w-full">
+            <div
+              class={`flex flex-col ring-1 shadow justify-between p-6 rounded-2xl relative overflow-hidden h-full bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950 ring-base-200 dark:ring-base-800 ring-inset group dark:hover:shadow-dark transform transition-all ${item.rotation}`}
             >
-              {item.description}
-            </Text>
+              <div class="flex items-center justify-between gap-x-4">
+                <div>
+                  <Text
+                    tag="h3"
+                    variant="textBase"
+                    class="font-medium dark:text-white text-base-900"
+                  >
+                    {item.name}
+                  </Text>
+                  <Text
+                    tag="p"
+                    variant="textSM"
+                    class="dark:text-base-400 text-base-600"
+                  >
+                    {item.about}
+                  </Text>
+                </div>
+                <img
+                  src={item.stackLogo}
+                  alt={item.name}
+                  class="duration-300 size-8 rounded-xl dark:border dark:border-base-700 group-hover:-rotate-45"
+                />
+              </div>
+              <Text
+                tag="p"
+                variant="textBase"
+                class="mt-2 text-base dark:text-base-400 text-base-600"
+              >
+                {item.description}
+              </Text>
+            </div>
           </div>
         ))}
       </div>
     ))
   }
+  
 </div>

@@ -8,9 +8,11 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 
 <footer x-data="{ year: new Date().getFullYear() }">
   <Wrapper class="py-24 flex flex-col"
-    >.
-    <a href="/"><Logo class="size-8 dark:text-white text-base-900 mx-auto" /></a
     >
+    <a href="/" aria-label="Go to homepage">
+      <Logo class="size-8 dark:text-white text-base-900 mx-auto" />
+    </a>
+    
     <Text
       tag="p"
       variant="textBase"
