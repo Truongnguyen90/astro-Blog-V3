@@ -84,7 +84,7 @@ import LogoCloud from "@/components/assets/LogoCloud.astro";
     <Wrapper variant="standard" class="py-12">
       <div class="flex items-end justify-between">
         <Text
-          tag="h3"
+          tag="h2"
           variant="displaySM"
           class="italic tracking-wide dark:text-white text-base-900 font-display"
         >
@@ -94,7 +94,7 @@ import LogoCloud from "@/components/assets/LogoCloud.astro";
           >See them all
         </Link>
       </div>
-      <div role="list" class="grid gap-2 mt-6 md:grid-cols-2">
+      <div class="grid gap-2 mt-6 md:grid-cols-2">
         {allProjects.slice(0, 2).map((post) => <ProjectEntries1 post={post} />)}
       </div>
     </Wrapper>
@@ -103,7 +103,7 @@ import LogoCloud from "@/components/assets/LogoCloud.astro";
     <Wrapper variant="standard" class="py-12">
       <div class="flex items-end justify-between">
         <Text
-          tag="h3"
+          tag="h2"
           variant="displaySM"
           class="italic tracking-wide dark:text-white text-base-900 font-display"
         >
@@ -113,7 +113,7 @@ import LogoCloud from "@/components/assets/LogoCloud.astro";
           >Read all my blog posts
         </Link>
       </div>
-      <div role="list" class="gap-2 mt-6">
+      <div  class="gap-2 mt-6">
         {allPosts.slice(0, 1).map((post) => <BlogEntries1 post={post} />)}
       </div>
     </Wrapper>
