@@ -45,9 +45,16 @@ const { title, url, description, pubDate, image } = {
       >
         {description}
       </Text>
-      <Link size="xs" variant="default" href={url} title={title}
-        >Read more
-      </Link>
+      <Link
+      size="xs"
+      variant="default"
+      href={url}
+      title={title}
+      aria-label={`Read more about ${title}`}
+    >
+      Read more
+    </Link>
+    
     </div>
   </div>
   <Image
