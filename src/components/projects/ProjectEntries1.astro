@@ -45,6 +45,14 @@ const { title, url, subtitle } = {
     >
       {subtitle}
     </Text>
-    <Link size="xs" variant="default" href={url} title={title}>Read more </Link>
+    <Link
+    size="xs"
+    variant="default"
+    href={url}
+    title={`Read more about ${title}`}
+  >
+    Read more about {title}
+  </Link>
+  
   </div>
 </div>
