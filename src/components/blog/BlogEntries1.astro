@@ -18,8 +18,13 @@ const { title, url, description, pubDate, image } = {
 ---
 
 <div
-  class="grid sm:grid-cols-2 p-2 ring-base-200 dark:ring-base-800 group shadow rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950"
+  class="grid sm:grid-cols-2 p-2 ring-base-200 dark:ring-base-800 group shadow rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950 relative"
 >
+  <a
+    href={url}
+    title={title}
+    aria-label={`Read more about ${title}`}
+    class="absolute inset-0 z-10"></a>
   <div
     class="flex flex-col justify-between md:min-h-96 p-4 rounded-2xl relative overflow-hidden h-full group"
   >
@@ -46,15 +51,14 @@ const { title, url, description, pubDate, image } = {
         {description}
       </Text>
       <Link
-      size="xs"
-      variant="default"
-      href={url}
-      title={title}
-      aria-label={`Read more about ${title}`}
-    >
-      Read more
-    </Link>
-    
+        size="xs"
+        variant="default"
+        aria-label={`Read more about ${title}`}
+        aria-hidden={true}
+        class="pointer-events-none"
+      >
+        Read more
+      </Link>
     </div>
   </div>
   <Image

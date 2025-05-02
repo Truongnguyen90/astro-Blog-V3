@@ -12,6 +12,8 @@ const { title, url, subtitle } = {
 <div
   class="flex flex-col ring-1 shadow justify-between min-h-72 p-8 rounded-3xl relative ring-base-200 dark:ring-base-800 overflow-hidden h-full bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950 ring-inset group hover:shadow-light dark:hover:shadow-dark transform transition-all group"
 >
+  <a href={url} title={`Read more about ${title}`} class="absolute inset-0 z-10"
+  ></a>
   <div class="flex justify-between items-center">
     <Text
       tag="h3"
@@ -46,13 +48,14 @@ const { title, url, subtitle } = {
       {subtitle}
     </Text>
     <Link
-    size="xs"
-    variant="default"
-    href={url}
-    title={`Read more about ${title}`}
-  >
-    Read more about {title}
-  </Link>
-  
+      size="xs"
+      variant="default"
+      href={url}
+      title={`Read more about ${title}`}
+      aria-hidden={true}
+      class="pointer-events-none"
+    >
+      Read more about {title}
+    </Link>
   </div>
 </div>
