@@ -58,26 +58,25 @@ const navLinks = [
   <Wrapper variant="standard">
     <nav
       role="navigation"
-      class="grid grid-cols-2 items-center justify-between w-full gap-12 py-4"
+      class="grid grid-cols-2 items-center w-full gap-12 py-4"
     >
-    <div class="flex flex-row items-center gap-2">
-      <Text
-        tag="a"
-        variant="textXL"
-        href="/"
-        aria-label="Go to homepage"
-        class="font-display italic text-center text-base-900 dark:text-white"
-      >
-        Jarvis
-      </Text>
-      <ThemeToggle
-        class="order-first md:order-last"
-        aria-label="Toggle theme"
-      />
-    </div>
-    
+      <div class="flex items-center gap-2">
+        <Text
+          tag="a"
+          variant="textXL"
+          href="/"
+          aria-label="Go to homepage"
+          class="font-display italic text-center text-base-900 dark:text-white"
+        >
+          Jarvis
+        </Text>
+        <ThemeToggle
+          class="order-first md:order-last"
+          aria-label="Toggle theme"
+        />
+      </div>
 
-      <div class="flex flex-row items-center gap-2 ml-auto">
+      <div class="flex items-center gap-2 min-w-0 ml-auto">
         <BlogSearch />
         <Text
           tag="a"
@@ -101,35 +100,35 @@ const navLinks = [
           Buy Flaco
         </Link>
         <button
-  type="button"
-  id="menuToggle"
-  aria-controls="menu"
-  aria-expanded="false"
-  aria-label="Open menu"
-  class="focus-visible:outline-none"
->
-  <span class="sr-only">Toggle menu</span>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    class="icon icon-tabler icons-tabler-outline icon-tabler-list-tree transition duration-300 ease-in-out text-base-900 dark:text-white size-6 shrink-0"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-    <path d="M9 6h11"></path>
-    <path d="M12 12h8"></path>
-    <path d="M15 18h5"></path>
-    <path d="M5 6v.01"></path>
-    <path d="M8 12v.01"></path>
-    <path d="M11 18v.01"></path>
-  </svg>
-</button>
+          type="button"
+          id="menuToggle"
+          aria-controls="menu"
+          aria-expanded="false"
+          aria-label="Open menu"
+          class="focus-visible:outline-none"
+        >
+          <span class="sr-only">Toggle menu</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-list-tree transition duration-300 ease-in-out text-base-900 dark:text-white size-6 shrink-0"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M9 6h11"></path>
+            <path d="M12 12h8"></path>
+            <path d="M15 18h5"></path>
+            <path d="M5 6v.01"></path>
+            <path d="M8 12v.01"></path>
+            <path d="M11 18v.01"></path>
+          </svg>
+        </button>
 
         <div
           id="menuContent"
