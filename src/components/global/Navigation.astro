@@ -58,7 +58,7 @@ const navLinks = [
   <Wrapper variant="standard">
     <nav
       role="navigation"
-      class="grid grid-cols-2 items-center w-full gap-12 py-4"
+      class="grid grid-cols-2 items-center w-full gap-4 py-4"
     >
       <div class="flex items-center gap-2">
         <Text
@@ -75,30 +75,22 @@ const navLinks = [
           aria-label="Toggle theme"
         />
       </div>
+      <div class="flex items-center justify-end gap-2">
+        <div class="flex items-center gap-2">
+          <BlogSearch />
 
-      <div class="flex items-center gap-2 min-w-0 ml-auto">
-        <BlogSearch />
-        <Text
-          tag="a"
-          variant="textSM"
-          underlined={true}
-          title="link to your page"
-          aria-label="your label"
-          href="/system/overview"
-          class="duration-300 font-medium dark:text-white text-base-900"
-        >
-          Overview
-        </Text>
-        <Link
-          size="xs"
-          variant="default"
-          title="link to your page"
-          aria-label="your label"
-          class="shrink-0"
-          href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU"
-        >
-          Buy Flaco
-        </Link>
+          <Link
+            size="xs"
+            variant="default"
+            title="link to your page"
+            aria-label="your label"
+            class="shrink-0"
+            href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU"
+          >
+            Buy Flaco
+          </Link>
+        </div>
+        <!-- Always show menu toggle -->
         <button
           type="button"
           id="menuToggle"
@@ -129,10 +121,9 @@ const navLinks = [
             <path d="M11 18v.01"></path>
           </svg>
         </button>
-
         <div
           id="menuContent"
-          class="fixed inset-0 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none z-9999 bg-white/20 dark:bg-black/50 backdrop-blur-xl"
+          class="fixed inset-0 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none z-50 bg-white/20 dark:bg-black/50 backdrop-blur-xl"
         >
           <Wrapper variant="standard" class="relative h-full px-8 py-4">
             <button
@@ -173,6 +164,33 @@ const navLinks = [
                   </div>
                 ))
               }
+              <!-- Add mobile-only menu items for the hidden elements -->
+              <div class="flex justify-end md:hidden">
+                <Text
+                  tag="a"
+                  variant="textXL"
+                  underlined={true}
+                  href="/system/overview"
+                  title="Overview"
+                  aria-label="Overview"
+                  class="block text-right dark:text-white text-base-900"
+                >
+                  Overview
+                </Text>
+              </div>
+              <div class="flex justify-end md:hidden">
+                <Text
+                  tag="a"
+                  variant="textXL"
+                  underlined={true}
+                  href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU"
+                  title="Buy Flaco"
+                  aria-label="Buy Flaco"
+                  class="block text-right dark:text-white text-base-900"
+                >
+                  Buy Flaco
+                </Text>
+              </div>
             </nav>
           </Wrapper>
         </div>
