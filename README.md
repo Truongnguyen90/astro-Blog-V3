@@ -37,7 +37,12 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
 Learn more - Explore more through Astro's official [documentation](https://docs.astro.build).
+------
+Updated on 05th March 2025
 
+## This update includes:
+- Small fixes
+- Ligth mode and dark mode code highlighting ( variables)
 ------
 Updated on 05th March 2025
 
