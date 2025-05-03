@@ -80,74 +80,119 @@
 }
 
 :root {
-  /* Shiki code style */
-  --astro-code-foreground: theme(colors.base.500);
-  --astro-code-background: theme(colors.base.950);
-  --astro-code-token-punctuation: var(--color-lime-300); /* lime-300 for punctuation */
-  --astro-code-token-parameter: var(--color-purple-300); /* Purple-300 for parameters */
-  --astro-code-token-line-number: theme(colors.base.400);
-  --astro-code-token-comment: theme(
-    colors.base.700
-  ); /* Muted purple-300 for comments */
-  --astro-code-token-cdata: var(
-    --color-purple-300
-  ); /* Same as parameter for consistency */
-  --astro-code-token-constant: var(--color-lime-300); /* lime-300 for constants */
-  --astro-code-token-function: var(
-    --color-lime-300
-  ); /* Brighter lime-300 for functions */
-  --astro-code-token-attr-name: var(--color-lime-300); /* Attribute names in lime-300 */
-  --astro-code-token-builtin: var(
-    --color-purple-300
-  ); /* Subtle distinction for built-ins */
-  --astro-code-token-boolean: var(--color-lime-300); /* Similar to constants */
-  --astro-code-token-class-name: var(
-    --color-purple-300
-  ); /* Purple-300 for class names */
-  --astro-code-token-property: var(--color-lime-300); /* lime-300 for properties */
-  --astro-code-token-selector: var(--color-lime-300); /* lime-300 for selectors */
-  --astro-code-token-string: var(
-    --color-purple-300
-  ); /* Slight contrast for strings */
-  --astro-code-token-string-expression: var(
-    --color-lime-300
-  ); /* Match other text tokens */
-  --astro-code-token-variable: var(--color-lime-300); /* lime-300 for variables */
-  --astro-code-token-keyword: var(--color-purple-300); /* Purple-300 for keywords */
-  --astro-code-token-symbol: var(--color-lime-300); /* Match text for consistency */
-  --astro-code-token-number: var(--color-lime-300); /* lime-300 for numbers */
-  --astro-code-token-operator: var(--color-lime-300); /* Slightly lighter lime-300 */
-  --astro-code-token-deleted: var(
-    --color-purple-300
-  ); /* Dim purple-300 for deleted tokens */
-  --astro-code-token-changed: var(
-    --color-purple-300
-  ); /* Medium purple-300 for changes */
-  --astro-code-token-important: var(
-    --color-lime-300
-  ); /* Bright lime-300 for important text */
-  --astro-code-token-tag: var(--color-purple-300); /* Slightly lighter for tags */
-  --astro-code-token-inserted: var(--color-lime-300); /* lime-300 for inserted text */
-  --astro-code-token-namespace: var(--color-purple-300); /* Consistent with tags */
-  --astro-code-token-atrule: var(--color-purple-300); /* Same as namespace */
-  --astro-code-token-entity: var(--color-lime-300); /* Match other identifiers */
-  --astro-code-token-highlight: theme(colors.base.700);
-  --astro-code-token-alert: var(--color-lime-300); /* Bright lime-300 for alerts */
-  --astro-code-token-emphasis: var(
-    --color-purple-300
-  ); /* Mid-tone purple-300 for emphasis */
-  --astro-code-token-focus: var(
-    --color-lime-300
-  ); /* Bright lime-300 for focused elements */
-  --astro-code-token-notice: var(
-    --color-lime-300
-  ); /* Match other noticeable elements */
-  --astro-code-token-attr-value: var(--color-purple-300); /* Same as strings */
-  --astro-code-token-regex: var(--color-purple-300); /* Consistent with strings */
-  --astro-code-token-doctype: var(--color-purple-300); /* Muted for doctype */
-  --astro-code-token-prolog: var(--color-purple-300); /* Same as comments */
+  --astro-code-foreground: theme(colors.base.700);
+  --astro-code-background: theme(colors.base.100);
+
+  --astro-code-token-punctuation: var(--color-lime-600);
+  --astro-code-token-parameter: var(--color-purple-600);
+  --astro-code-token-line-number: theme(colors.base.500);
+  --astro-code-token-comment: theme(colors.base.500);
+  --astro-code-token-cdata: var(--color-purple-600);
+  --astro-code-token-constant: var(--color-lime-600);
+  --astro-code-token-function: var(--color-lime-600);
+  --astro-code-token-attr-name: var(--color-lime-600);
+  --astro-code-token-builtin: var(--color-purple-600);
+  --astro-code-token-boolean: var(--color-lime-600);
+  --astro-code-token-class-name: var(--color-purple-600);
+  --astro-code-token-property: var(--color-lime-600);
+  --astro-code-token-selector: var(--color-lime-600);
+  --astro-code-token-string: var(--color-purple-600);
+  --astro-code-token-string-expression: var(--color-lime-600);
+  --astro-code-token-variable: var(--color-lime-600);
+  --astro-code-token-keyword: var(--color-purple-600);
+  --astro-code-token-symbol: var(--color-lime-600);
+  --astro-code-token-number: var(--color-lime-600);
+  --astro-code-token-operator: var(--color-lime-600);
+  --astro-code-token-deleted: var(--color-purple-600);
+  --astro-code-token-changed: var(--color-purple-600);
+  --astro-code-token-important: var(--color-lime-600);
+  --astro-code-token-tag: var(--color-purple-600);
+  --astro-code-token-inserted: var(--color-lime-600);
+  --astro-code-token-namespace: var(--color-purple-600);
+  --astro-code-token-atrule: var(--color-purple-600);
+  --astro-code-token-entity: var(--color-lime-600);
+  --astro-code-token-highlight: theme(colors.base.200);
+  --astro-code-token-alert: var(--color-lime-600);
+  --astro-code-token-emphasis: var(--color-purple-600);
+  --astro-code-token-focus: var(--color-lime-600);
+  --astro-code-token-notice: var(--color-lime-600);
+  --astro-code-token-attr-value: var(--color-purple-600);
+  --astro-code-token-regex: var(--color-purple-600);
+  --astro-code-token-doctype: var(--color-purple-600);
+  --astro-code-token-prolog: var(--color-purple-600);
   --astro-code-token-bold: inherit;
-  --astro-code-token-: ;
   --astro-code-token-underline: underline;
 }
 
+
+:root.dark {
+/* Shiki code style */
+--astro-code-foreground: theme(colors.base.500);
+--astro-code-background: theme(colors.base.950);
+--astro-code-token-punctuation: var(--color-lime-300); /* lime-300 for punctuation */
+--astro-code-token-parameter: var(--color-purple-300); /* Purple-300 for parameters */
+--astro-code-token-line-number: theme(colors.base.400);
+--astro-code-token-comment: theme(
+  colors.base.700
+); /* Muted purple-300 for comments */
+--astro-code-token-cdata: var(
+  --color-purple-300
+); /* Same as parameter for consistency */
+--astro-code-token-constant: var(--color-lime-300); /* lime-300 for constants */
+--astro-code-token-function: var(
+  --color-lime-300
+); /* Brighter lime-300 for functions */
+--astro-code-token-attr-name: var(--color-lime-300); /* Attribute names in lime-300 */
+--astro-code-token-builtin: var(
+  --color-purple-300
+); /* Subtle distinction for built-ins */
+--astro-code-token-boolean: var(--color-lime-300); /* Similar to constants */
+--astro-code-token-class-name: var(
+  --color-purple-300
+); /* Purple-300 for class names */
+--astro-code-token-property: var(--color-lime-300); /* lime-300 for properties */
+--astro-code-token-selector: var(--color-lime-300); /* lime-300 for selectors */
+--astro-code-token-string: var(
+  --color-purple-300
+); /* Slight contrast for strings */
+--astro-code-token-string-expression: var(
+  --color-lime-300
+); /* Match other text tokens */
+--astro-code-token-variable: var(--color-lime-300); /* lime-300 for variables */
+--astro-code-token-keyword: var(--color-purple-300); /* Purple-300 for keywords */
+--astro-code-token-symbol: var(--color-lime-300); /* Match text for consistency */
+--astro-code-token-number: var(--color-lime-300); /* lime-300 for numbers */
+--astro-code-token-operator: var(--color-lime-300); /* Slightly lighter lime-300 */
+--astro-code-token-deleted: var(
+  --color-purple-300
+); /* Dim purple-300 for deleted tokens */
+--astro-code-token-changed: var(
+  --color-purple-300
+); /* Medium purple-300 for changes */
+--astro-code-token-important: var(
+  --color-lime-300
+); /* Bright lime-300 for important text */
+--astro-code-token-tag: var(--color-purple-300); /* Slightly lighter for tags */
+--astro-code-token-inserted: var(--color-lime-300); /* lime-300 for inserted text */
+--astro-code-token-namespace: var(--color-purple-300); /* Consistent with tags */
+--astro-code-token-atrule: var(--color-purple-300); /* Same as namespace */
+--astro-code-token-entity: var(--color-lime-300); /* Match other identifiers */
+--astro-code-token-highlight: theme(colors.base.700);
+--astro-code-token-alert: var(--color-lime-300); /* Bright lime-300 for alerts */
+--astro-code-token-emphasis: var(
+  --color-purple-300
+); /* Mid-tone purple-300 for emphasis */
+--astro-code-token-focus: var(
+  --color-lime-300
+); /* Bright lime-300 for focused elements */
+--astro-code-token-notice: var(
+  --color-lime-300
+); /* Match other noticeable elements */
+--astro-code-token-attr-value: var(--color-purple-300); /* Same as strings */
+--astro-code-token-regex: var(--color-purple-300); /* Consistent with strings */
+--astro-code-token-doctype: var(--color-purple-300); /* Muted for doctype */
+--astro-code-token-prolog: var(--color-purple-300); /* Same as comments */
+--astro-code-token-bold: inherit;
+--astro-code-token-: ;
+--astro-code-token-underline: underline;
+}

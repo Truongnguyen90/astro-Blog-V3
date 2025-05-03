@@ -74,13 +74,13 @@ const { frontmatter } = Astro.props;
           {
             frontmatter.tags.map((tag, index) => (
               <>
-                {index > 0 && <span class="text-white">·</span>}
+                {index > 0 && <span class="text-black dark:text-white">·</span>}
                 <Text
                   tag="a"
                   variant="textSM"
                   underlined={true}
                   href={`/blog/tags/${tag}`}
-                  class="text-white capitalize"
+                  class="text-black dark:text-white capitalize"
                 >
                   {tag}
                 </Text>
