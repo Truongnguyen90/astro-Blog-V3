@@ -1,18 +1,10 @@
 ---
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
-import Link from "@/components/fundations/elements/Link.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Components
-import ThemeToggle from "@/components/assets/ThemeToggle.astro";
-import BlogSearch from "@/components/blog/BlogSearch.astro";
+
 // Navigation links
 const navLinks = [
-  {
-    text: "Overview",
-    href: "/system/overview",
-    classes: "hover:text-base-900   duration-300",
-  },
   {
     text: "Colors",
     href: "/system/colors",
@@ -70,25 +62,21 @@ const navLinks = [
         >
           Jarvis
         </Text>
-        <ThemeToggle
-          class="order-first md:order-last"
-          aria-label="Toggle theme"
-        />
       </div>
       <div class="flex items-center justify-end gap-2">
         <div class="flex items-center gap-2">
-          <BlogSearch />
-
-          <Link
-            size="xs"
-            variant="default"
-            title="link to your page"
-            aria-label="your label"
-            class="shrink-0"
+          <a
+            class="text-sm text-base-500 hover:text-base-900 duration-300 dark:text-base-400 dark:hover:text-white"
+            href="/system/overview"
+          >
+            Overview
+          </a>
+          <a
+            class="text-sm text-base-500 hover:text-base-900 duration-300 dark:text-base-400 dark:hover:text-white"
             href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU"
           >
             Buy Flaco
-          </Link>
+          </a>
         </div>
         <!-- Always show menu toggle -->
         <button
@@ -110,7 +98,7 @@ const navLinks = [
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-list-tree transition duration-300 ease-in-out text-base-900 dark:text-white size-6 shrink-0"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-list-tree transition duration-300 ease-in-out text-base-900 dark:text-white size-5 shrink-0"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M9 6h11"></path>

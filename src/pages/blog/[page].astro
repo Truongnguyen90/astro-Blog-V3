@@ -1,0 +1,98 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import BlogEntries1 from "@/components/blog/BlogEntries1.astro";
+import SubscribeCta from "@/components/blog/SubscribeCta.astro";
+import BlogSearch from "@/components/blog/BlogSearch.astro";
+// Get all posts
+import { getCollection } from "astro:content";
+// Needed for dynamic pagination
+export async function getStaticPaths() {
+  const POSTS_PER_PAGE = 2;
+  const allPosts = await getCollection("posts");
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  return Array.from({ length: totalPages }, (_, i) => ({
+    params: { page: String(i + 1) },
+  }));
+}
+// Get the current page from URL
+const { page } = Astro.params;
+const currentPage = parseInt(page);
+// Fetch posts and paginate
+const POSTS_PER_PAGE = 2;
+const allPosts = await getCollection("posts");
+const sortedPosts = allPosts
+  .filter((post) => post.data?.pubDate)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
+const start = (currentPage - 1) * POSTS_PER_PAGE;
+const paginatedPosts = sortedPosts.slice(start, start + POSTS_PER_PAGE);
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-24">
+      <div class="text-center">
+        <Text
+          tag="h1"
+          variant="displayXL"
+          class="text-balance dark:text-white text-base-900"
+        >
+          Welcome to my blog:
+          <span class="font-display italic tracking-wide">
+            News and thoughts
+          </span>
+        </Text>
+        <Text
+          tag="p"
+          variant="textLG"
+          class="mt-4 dark:text-base-400 text-base-600 text-balance"
+        >
+          I write about everything that I learn, join me on my journey.
+        </Text>
+        <div class="mt-4"><BlogSearch /></div>
+      </div>
+      <div class="flex flex-col gap-2 mt-12">
+        {paginatedPosts.map((post) => <BlogEntries1 post={post} />)}
+      </div>
+      <nav
+        class="flex flex-col md:flex-row lg:justify-between gap-4 items-center mt-12 text-xs text-black relative"
+        aria-label="Pagination"
+      >
+        <div>
+          {
+            currentPage > 1 && (
+              <a
+                href={currentPage === 2 ? `/blog` : `/blog/${currentPage - 1}`}
+                class="flex items-center gap-2 hover:opacity-80"
+                aria-label="Go to previous page"
+              >
+                <span aria-hidden="true">&larr;</span>
+                <span>Previous</span>
+              </a>
+            )
+          }
+        </div>
+
+        <div>
+          {
+            currentPage < totalPages && (
+              <a
+                href={`/blog/${currentPage + 1}`}
+                class="flex items-center gap-2 hover:opacity-80"
+                aria-label="Go to next page"
+              >
+                <span>Next</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            )
+          }
+        </div>
+      </nav>
+    </Wrapper>
+  </section>
+  <SubscribeCta />
+</BaseLayout>

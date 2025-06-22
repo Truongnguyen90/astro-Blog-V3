@@ -37,6 +37,12 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
 Learn more - Explore more through Astro's official [documentation](https://docs.astro.build).
+----------------------------
+Updated on 22st Jun 2025
+- Added blog pages with pagination
+- Added pagination on blog posts
+- Moved forms to their own pages 
+- Moved images to src folder
 ------
 Updated on 05th March 2025
 

@@ -58,10 +58,10 @@ const pageData = [
       {
         title: "Blog Pages",
         links: [
-          { url: "/blog/home", name: "Blog home" },
-          { url: "/blog/home-two", name: "Blog home two" },
-          { url: "/blog/home-three", name: "Blog home three" },
-          { url: "/blog/posts/1", name: "Blog post" },
+         { url: "/blog", name: "Blog home" },
+          { url: "/blog/home-2", name: "Blog home 2" },
+          { url: "/blog/home-3", name: "Blog home 3" },
+          { url: "/blog/posts/1", name: "Post" },
           { url: "/blog/tags", name: "Tag index" },
           { url: "/blog/tags/astro", name: "Tag category" },
           { url: "/rss.xml", name: "RSS" },
@@ -114,7 +114,7 @@ const pageData = [
               >
                 {section.sectionTitle}
               </Text>
-              <div class=" grid grid-cols-1 md:grid-cols-2 gap-y-8    mt-4 pt-4 border-t dark:border-base-900 border-base-200">
+              <div class=" grid grid-cols-1 md:grid-cols-2 gap-y-12    mt-4 pt-4 border-t dark:border-base-900 border-base-200">
                 {section.categories.map((category) => (
                   <div class="flex flex-col ">
                     <Text
@@ -124,7 +124,7 @@ const pageData = [
                     >
                       {category.title}
                     </Text>
-                    <div class="flex flex-col gap-2 mt-2">
+                    <div class=" mt-1">
                       {category.links.map((link) => (
                         <div>
                           <Text

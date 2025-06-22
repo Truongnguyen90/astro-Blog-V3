@@ -13,12 +13,11 @@ import SubscribeCta from "@/components/blog/SubscribeCta.astro";
 // Content
 const allPosts = await getCollection("posts");
 import { getCollection } from "astro:content";
-const { frontmatter } = Astro.props;
+const { frontmatter, previous, next } = Astro.props;
 ---
 
 <BaseLayout>
   <ScrollUpButton />
-
   <section>
     <Wrapper class="py-24">
       <div class="text-center">
@@ -88,6 +87,46 @@ const { frontmatter } = Astro.props;
             ))
           }
         </div>
+        <nav
+          class="flex flex-col md:flex-row lg:justify-between gap-4 lg:items-center relative text-xs mt-24 "
+        >
+          <div>
+            {
+              previous && (
+                <a
+                  href={`/blog/posts/${previous.slug}`}
+                  class="hover:opacity-80 "
+                >
+                  <span class="block  text-base-900 dark:text-white font-medium uppercase">
+                    Previous:
+                  </span>
+                  <span class="block  text-base-500 dark:text-base-400">
+                    {" "}
+                    {previous.data.title}
+                  </span>
+                </a>
+              )
+            }
+          </div>
+          <div>
+            {
+              next && (
+                <a
+                  href={`/blog/posts/${next.slug}`}
+                  class=" hover:opacity-80 text-right"
+                >
+                  <span class="block  text-base-900 dark:text-white font-medium uppercase ">
+                    Next:
+                  </span>
+                  <span class="block  text-base-500 dark:text-base-400">
+                    {" "}
+                    {next.data.title}
+                  </span>
+                </a>
+              )
+            }
+          </div>
+        </nav>
       </div>
     </Wrapper>
   </section>

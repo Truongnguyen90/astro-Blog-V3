@@ -1,14 +1,5 @@
----
-// Logo Component This component renders an SVG logo and accepts props for customization.
-// Props: - class: A string of additional classes to style the SVG.
-// - ...rest: Any other valid attributes for an <svg> element (e.g., id, style, role, aria-label, etc.).
-// Example Usage: <Logo class="my-custom-class" /> or <Logo id="logo-id" style="width: 50px; height: 50px;" />
-const { class: className = "", ...rest } = Astro.props;
----
-
 <button
-  class={className}
-  {...rest}
+  class="items-center flex justify-center font-semibold text-base-900 duration-300 rounded-xl shadow-lg size-12 bg-base-50 hover:bg-base-200 dark:bg-base-800 dark:hover:bg-base-900 dark:text-white dark:ring-base-800 ring-1 ring-inset ring-base-200 transition-opacity fixed bottom-1 left-1 lg:bottom-4 lg:left-4 z-50"
   role="switch"
   aria-checked="false"
   id="theme-toggle"
@@ -24,10 +15,8 @@ const { class: className = "", ...rest } = Astro.props;
     ></path></svg
   >
 </button>
-
 <script>
   const toggle = document.getElementById("theme-toggle");
-
   function updateTheme(isDark) {
     // Toggle dark mode class on the root HTML element
     document.documentElement.classList.toggle("dark", isDark);
@@ -35,7 +24,6 @@ const { class: className = "", ...rest } = Astro.props;
     // Save the user's theme preference in localStorage
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }
-
   // Initialize theme based on localStorage or system preference
   function initializeTheme() {
     const savedTheme = localStorage.getItem("theme");
@@ -45,10 +33,8 @@ const { class: className = "", ...rest } = Astro.props;
     const isDark = savedTheme ? savedTheme === "dark" : systemPrefersDark;
     updateTheme(isDark);
   }
-
   // Run initialization when page loads
   initializeTheme();
-
   // Handle toggle click event
   toggle.addEventListener("click", () => {
     const isDark = toggle.getAttribute("aria-checked") === "true";
