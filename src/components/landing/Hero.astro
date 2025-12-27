@@ -1,0 +1,62 @@
+---
+// Assets
+import { Image } from "astro:assets";
+import Avatar from "@/images/assets/avatar.png";
+import LogoCloud from "@/components/assets/LogoCloud.astro";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Icons
+import ChevronRight from "@/components/fundations/icons/ChevronRight.astro";
+---
+
+<section class="relative overflow-hidden">
+  <Wrapper variant="standard" class="relative py-24">
+    <div class="text-center">
+      <div class="flex justify-center">
+        <Text
+          tag="a"
+          variant="textSM"
+          underlined={true}
+          href="/studio"
+          class="flex items-center gap-2 group text-base-900 dark:text-white"
+        >
+          Hire me 2 spots open
+          <ChevronRight class="size-4" />
+        </Text>
+      </div>
+      <div class="mt-8 text-balance">
+        <Text
+          tag="h1"
+          variant="displayXL"
+          class="flex items-baseline justify-center font-medium gap-3 dark:text-white text-base-900"
+        >
+          Hi, I'm Jarvis
+          <Image
+            width={400}
+            height={200}
+            src={Avatar}
+            alt="#_"
+            class="size-12 rounded-xl md:size-16 hover:scale-150 duration-300 hover:rotate-6 ease-in-out"
+          />,
+        </Text>
+        <Text
+          tag="p"
+          variant="displayXL"
+          class="italic tracking-wide font-display dark:text-base-400 text-base-600"
+        >
+          software engineer.
+        </Text>
+      </div>
+      <Text
+        tag="p"
+        variant="textLG"
+        class="mt-4 dark:text-base-400 text-base-600 text-balance"
+      >
+        Crafting code, one line at a time: meet flaco, software engineer
+        extraordinaire, yo!
+      </Text>
+      <LogoCloud />
+    </div>
+  </Wrapper>
+</section>

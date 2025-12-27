@@ -1,38 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
-import BlogLayout from '@/layouts/BlogLayout.astro';
-
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { getCollection } from "astro:content";
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('posts');
-  return blogEntries.map(entry => ({
+  const blogEntries = await getCollection("posts");
+  return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
 }
-
 const { entry } = Astro.props;
-
-// Re-fetch and filter valid posts
-const allPosts = await getCollection('posts');
-const validPosts = allPosts.filter(
-  (item) => item.data?.title
-);
-
-// Sort by date if available, otherwise leave as-is
-const sorted = validPosts.sort((a, b) => {
-  const dateA = new Date(a.data?.pubDate || 0).getTime();
-  const dateB = new Date(b.data?.pubDate || 0).getTime();
-  return dateB - dateA;
-});
-
-// Find current index
-const index = sorted.findIndex(item => item.slug === entry.slug);
-const previous = sorted[index - 1] || null;
-const next = sorted[index + 1] || null;
-
 const { Content } = await entry.render();
 ---
 
-<BlogLayout frontmatter={entry.data} previous={previous} next={next}>
+<BlogLayout frontmatter={entry.data}>
   <Content />
 </BlogLayout>

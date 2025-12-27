@@ -3,7 +3,7 @@
 import { Image } from "astro:assets";
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Link from "@/components/fundations/elements/Link.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Content
@@ -31,8 +31,9 @@ const { frontmatter, previous, next } = Astro.props;
         </Text>
       </div>
 
-      <div class="flex items-center justify-center gap-4 mt-6">
-        <Link
+      <div class="flex items-center justify-center mt-6 gap-4">
+        <Button
+          isLink
           size="sm"
           variant="muted"
           href={frontmatter.preview}
@@ -40,8 +41,9 @@ const { frontmatter, previous, next } = Astro.props;
           aria-label={frontmatter.preview}
         >
           Preview demo
-        </Link>
-        <Link
+        </Button>
+        <Button
+          isLink
           size="sm"
           variant="default"
           href="#_"
@@ -49,7 +51,7 @@ const { frontmatter, previous, next } = Astro.props;
           aria-label="your label"
         >
           Buy {frontmatter.title} for ${frontmatter.price}
-        </Link>
+        </Button>
       </div>
 
       <div class="mt-12 space-y-12">
@@ -58,7 +60,7 @@ const { frontmatter, previous, next } = Astro.props;
           alt={frontmatter.image.alt}
           width={600}
           height={600}
-          class="object-cover object-top w-full rounded-2xl shadow ring-1 dark:ring-base-800 ring-base-200"
+          class="object-cover object-top w-full shadow rounded-2xl ring-1 dark:ring-base-800 ring-base-200"
         />
 
         <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -115,15 +117,15 @@ const { frontmatter, previous, next } = Astro.props;
             ))
           }
         </div>
-        <dl class="grid gap-2 mt-6 sm:grid-cols-2">
+        <dl class="mt-6 grid gap-2 sm:grid-cols-2">
           {
             frontmatter.features.map((feature) => (
-              <div class="relative flex flex-col p-6 overflow-hidden transition-all transform ring-1 dark:ring-base-800 shadow   rounded-2xl bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950        ring-base-200      ring-inset group hover:shadow-light   dark:hover:shadow-dark">
+              <div class="relative flex flex-col p-6 overflow-hidden shadow transition-all transform ring-1 dark:ring-base-800  rounded-2xl bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950 ring-base-200 ring-inset group hover:shadow-light dark:hover:shadow-dark">
                 <dt>
                   <Text
                     tag="h3"
                     variant="textLG"
-                    class="dark:text-white text-base-900    "
+                    class="dark:text-white text-base-900 "
                   >
                     {feature.title}
                   </Text>
@@ -142,13 +144,13 @@ const { frontmatter, previous, next } = Astro.props;
           }
         </dl>
         <nav
-          class="flex flex-col md:flex-row lg:justify-between gap-4 lg:items-center relative text-xs mt-24"
+          class="relative flex flex-col mt-24 text-xs md:flex-row lg:justify-between gap-4 lg:items-center"
         >
           <div>
             {
               previous && (
                 <a href={`/store/${previous.slug}`} class="hover:opacity-80 ">
-                  <span class="block  text-base-900 dark:text-white font-medium uppercase">
+                  <span class="block font-medium uppercase  text-base-900 dark:text-white">
                     Previous:
                   </span>
                   <span class="block  text-base-500 dark:text-base-400">
@@ -163,9 +165,9 @@ const { frontmatter, previous, next } = Astro.props;
               next && (
                 <a
                   href={`/store/${next.slug}`}
-                  class=" hover:opacity-80 text-right"
+                  class="text-right  hover:opacity-80"
                 >
-                  <span class="block  text-base-900 dark:text-white font-medium uppercase ">
+                  <span class="block font-medium uppercase  text-base-900 dark:text-white">
                     Next:
                   </span>
                   <span class="block  text-base-500 dark:text-base-400">

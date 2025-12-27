@@ -4,16 +4,24 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import StackEntries2 from "@/components/stack/StackEntries2.astro";
+import StackCard2 from "@/components/stack/StackCard2.astro";
 ---
 
 <BaseLayout>
   <section>
     <Wrapper variant="standard" class="py-24">
       <div class="text-center">
-        <Text tag="h1" variant="displayXL" class="dark:text-base-400 text-base-600 text-balance">
+        <Text
+          tag="h1"
+          variant="displayXL"
+          class="dark:text-white text-base-900 text-balance"
+        >
           Software I use daily
-          <span class="italic tracking-wide font-display"> and recommend </span>
+          <span
+            class="italic tracking-wide font-display dark:text-base-400 text-base-600"
+          >
+            and recommend
+          </span>
         </Text>
         <Text
           tag="p"
@@ -25,7 +33,7 @@ import StackEntries2 from "@/components/stack/StackEntries2.astro";
           recommendations.
         </Text>
       </div>
-      <StackEntries2 />
+      <StackCard2 />
     </Wrapper>
   </section>
 </BaseLayout>

@@ -4,12 +4,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import ProjectEntries2 from "@/components/projects/ProjectEntries2.astro";
+import ProjectCard2 from "@/components/projects/ProjectCard2.astro";
 // Content
 import { getCollection } from "astro:content";
 const allProjects = await getCollection("projects");
 ---
-
 <BaseLayout>
   <section>
     <Wrapper class="py-24">
@@ -21,7 +20,7 @@ const allProjects = await getCollection("projects");
         >
           I like to build
           <span
-            class="font-display italic dark:text-base-400 text-base-600 tracking-wide"
+            class="italic tracking-wide font-display dark:text-base-400 text-base-600"
           >
             projects from scrach
           </span>
@@ -35,9 +34,8 @@ const allProjects = await getCollection("projects");
           and I love to share my projects with the world.
         </Text>
       </div>
-
-      <div class="flex flex-col gap-2 mt-6">
-        {allProjects.map((post) => <ProjectEntries2 post={post} />)}
+      <div class="flex flex-col mt-6 gap-2">
+        {allProjects.map((post) => <ProjectCard2 post={post} />)}
       </div>
     </Wrapper>
   </section>

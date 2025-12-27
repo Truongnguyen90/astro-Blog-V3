@@ -20,7 +20,7 @@ const allProducts = await getCollection("store");
           class="dark:text-white text-base-900 text-balance"
         >
           Digital products <span
-            class="italic font-light tracking-wide font-display block"
+            class="block italic font-light tracking-wide font-display"
             >for your business</span
           >
         </Text>
@@ -33,7 +33,7 @@ const allProducts = await getCollection("store");
           and to make your life easier and more productive.
         </Text>
       </div>
-      <div class="flex flex-col gap-2 mt-12">
+      <div class="flex flex-col mt-12 gap-2">
         {allProducts.map((post) => <StoreEntries1 post={post} />)}
       </div>
     </Wrapper>

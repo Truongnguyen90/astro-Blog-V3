@@ -1,0 +1,59 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+// Icons
+import Plus from "@/components/fundations/icons/Plus.astro";
+const { title, url, subtitle, logo } = {
+  url: "/projects/" + Astro.props.post.slug,
+  title: Astro.props.post.data.title,
+  logo: Astro.props.post.data.logo.url,
+  subtitle: Astro.props.post.data.subtitle,
+};
+---
+
+<div
+  class="p-2 shadow grid sm:grid-cols-2 ring-base-200 dark:ring-base-800 duration-300 group rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950"
+>
+  <div
+    class="relative flex flex-col justify-between h-full p-4 overflow-hidden min-h-72 rounded-2xl"
+  >
+    <div class="flex items-center justify-between">
+      <Text
+        tag="h3"
+        variant="textBase"
+        class="font-medium uppercase dark:text-white text-base-900"
+      >
+        {title}
+      </Text>
+      <div
+        class="p-1 text-white bg-black rounded-full dark:bg-base-50 dark:text-base-900 group-hover:-rotate-45 duration-300"
+      >
+        <Plus class="size-5" />
+      </div>
+    </div>
+    <div
+      class="flex flex-col items-start justify-between sm:-mb-20 sm:group-hover:mb-0 gap-12 duration-300"
+    >
+      <Text
+        tag="p"
+        variant="textBase"
+        class="mt-8 dark:text-base-400 text-base-600 leading-6 text-balance"
+      >
+        {subtitle}
+      </Text>
+      <Button isLink size="xs" variant="default" href={url} title={title}
+        >Read more
+      </Button>
+    </div>
+  </div>
+  <Image
+    src={logo}
+    alt={title}
+    width={500}
+    height={800}
+    class="order-first object-cover w-full h-full rounded-2xl sm:order-last"
+  />
+</div>

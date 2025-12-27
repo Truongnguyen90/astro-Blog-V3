@@ -55,7 +55,13 @@ This theme includes a ready-to-use [PagesCMS](https://pagescms.org) config file 
 Learn more:  
 - [PagesCMS homepage](https://pagescms.org/)  
 - [Configuration docs](https://pagescms.org/docs/configuration/)  
-
+------
+Updated on 27th Dec 2025
+- Button takes Button and links props
+- Icons components
+- Remove broken pagination
+- Remove blog pages/cards 2 and 3
+- Updated accessibility
 ------
 Updated on 22st Jun 2025
 - Added blog pages with pagination

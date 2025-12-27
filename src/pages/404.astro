@@ -1,7 +1,7 @@
 ---
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Link from "@/components/fundations/elements/Link.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 ---
@@ -15,8 +15,8 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
           variant="displayXL"
           class="text-balance dark:text-white text-base-900"
         >
-          Oh, oh...........!
-          <span class="font-display italic tracking-wide"> 404 error </span>
+          Oh, oh...!
+          <span class="italic tracking-wide font-display"> 404 error </span>
         </Text>
         <Text
           tag="p"
@@ -27,9 +27,15 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
           moved, deleted, or does not exist. Please try again. If the problem
           persists, please contact the site administrator.
         </Text>
-        <div class="mt-8 flex justify-center">
-          <Link size="sm" variant="muted" href="/">Go back home </Link>
-        </div>
+
+        <Button
+          isLink
+          size="sm"
+          variant="muted"
+          href="/"
+          class="mx-auto mt-8 w-fit"
+          >Go back home
+        </Button>
       </div>
     </Wrapper>
   </section>

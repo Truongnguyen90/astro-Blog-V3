@@ -4,7 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import WorkEntries1 from "@/components/work/WorkEntries1.astro";
+import WorkCard from "@/components/work/WorkCard.astro";
 // Content
 import { getCollection } from "astro:content";
 const allWork = await getCollection("work");
@@ -16,8 +16,14 @@ import LogoCloud from "@/components/assets/LogoCloud.astro";
   <section>
     <Wrapper variant="standard" class="py-24">
       <div class="text-center">
-        <Text tag="h1" variant="displayXL" class="text-white text-balance">
-          Check out my <span class="italic tracking-wide font-display">
+        <Text
+          tag="h1"
+          variant="displayXL"
+          class="dark:text-white text-base-900 text-balance"
+        >
+          Check out my <span
+            class="italic tracking-wide font-display dark:text-base-400 text-base-600"
+          >
             portfolio
           </span>
         </Text>
@@ -31,8 +37,8 @@ import LogoCloud from "@/components/assets/LogoCloud.astro";
         </Text>
       </div>
       <LogoCloud />
-      <div role="list" class="grid gap-2 mt-12 sm:grid-cols-2">
-        {allWork.map((post) => <WorkEntries1 post={post} />)}
+      <div role="list" class="mt-12 grid gap-2 sm:grid-cols-2">
+        {allWork.map((post) => <WorkCard post={post} />)}
       </div>
     </Wrapper>
   </section>

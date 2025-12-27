@@ -13,12 +13,12 @@ import Navigation from "@/components/global/Navigation.astro";
     <BaseHead />
   </head>
   <body
-    class="flex flex-col min-h-svh bg-white dark:bg-base-950 transition-colors duration-300"
+    class="flex flex-col bg-white min-h-svh dark:bg-base-950 transition-colors duration-300"
   >
    
   <ThemeToggle class="" aria-label="Toggle theme" />
     <Navigation />
-    <main class="grow relative"><slot /></main>
+    <main class="relative grow"><slot /></main>
     <Footer />
   </body>
 </html>

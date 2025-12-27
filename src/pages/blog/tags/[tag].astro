@@ -4,7 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import Entries2 from "@/components/blog/BlogEntries2.astro";
+import BlogCard from "@/components/blog/BlogCard.astro";
 // Content
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
@@ -25,6 +25,7 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
+
 <BaseLayout>
   <section>
     <Wrapper class="py-24">
@@ -35,7 +36,7 @@ const { posts } = Astro.props;
           class="text-balance dark:text-white text-base-900"
         >
           Blog posts
-          <span class="font-display italic tracking-wide block">
+          <span class="block italic tracking-wide font-display">
             tagged with {tag}
           </span>
         </Text>
@@ -47,9 +48,9 @@ const { posts } = Astro.props;
           Find all the posts tagged with {tag}.
         </Text>
       </div>
-      <ul class="mt-12 grid md:grid-cols-2 gap-2">
-        {posts.map((post) => <Entries2 post={post} />)}
-      </ul>
+      <div class="flex flex-col mt-12 gap-2">
+        {posts.map((post) => <BlogCard post={post} />)}
+      </div>
     </Wrapper>
   </section>
 </BaseLayout>

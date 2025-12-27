@@ -1,0 +1,31 @@
+---
+// Fundations
+import Button from "@/components/fundations/elements/Button.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import ProjectCard1 from "@/components/projects/ProjectCard1.astro";
+// Content
+import { getCollection } from "astro:content";
+const allProjects = await getCollection("projects");
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <div class="flex items-end justify-between">
+      <Text
+        tag="h2"
+        variant="displaySM"
+        class="italic tracking-wide dark:text-white text-base-900 font-display"
+      >
+        Projects
+      </Text>
+      <Button isLink size="xs" variant="muted" href="/projects/"
+        >See them all
+      </Button>
+    </div>
+    <div class="mt-6 grid gap-2 md:grid-cols-2">
+      {allProjects.slice(0, 2).map((post) => <ProjectCard1 post={post} />)}
+    </div>
+  </Wrapper>
+</section>

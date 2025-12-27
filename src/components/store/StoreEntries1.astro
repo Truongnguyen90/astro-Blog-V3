@@ -2,7 +2,7 @@
 // Assets
 import { Image } from "astro:assets";
 // Fundations
-import Link from "@/components/fundations/elements/Link.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 const { title, url, description, image, price } = {
   url: "/store/" + Astro.props.post.slug,
@@ -14,7 +14,7 @@ const { title, url, description, image, price } = {
 ---
 
 <div
-  class="grid p-2 duration-300 sm:grid-cols-2 ring-base-200 group shadow rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950"
+  class="p-2 shadow grid duration-300 sm:grid-cols-2 ring-base-200 group rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950"
 >
   <div
     class="relative flex flex-col justify-between h-full p-4 overflow-hidden rounded-2xl"
@@ -22,7 +22,7 @@ const { title, url, description, image, price } = {
     <Text
       tag="h3"
       variant="textBase"
-      class="flex items-center justify-between w-full font-medium dark:text-white text-base-900 uppercase text-balance"
+      class="flex items-center justify-between w-full font-medium uppercase dark:text-white text-base-900 text-balance"
     >
       {title} ${price}
     </Text>
@@ -34,9 +34,9 @@ const { title, url, description, image, price } = {
       >
         {description}
       </Text>
-      <Link size="xs" variant="default" href={url} title={title}
+      <Button isLink size="xs" variant="default" href={url} title={title}
         >Read more
-      </Link>
+      </Button>
     </div>
   </div>
   <Image

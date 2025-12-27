@@ -10,7 +10,6 @@ import Penpot from "@/images/stacklogos/penpot.svg";
 import Tailwind from "@/images/stacklogos/tailwind.svg";
 import LexingtonThemes from "@/images/stacklogos/lexingtonthemes.svg";
 // Fundations
-import Link from "@/components/fundations/elements/Link.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 // Structure the stack with their respective items
 const stack = [
@@ -91,30 +90,30 @@ const stack = [
 ];
 ---
 
-<div class="flex flex-col gap-12 mt-24">
+<div class="flex flex-col mt-24 gap-12">
   {
     stack.map((section) => (
       <div class="flex flex-col gap-6 ">
-        <p class="text-2xl italic tracking-wide dark:text-white text-base-900    font-display ">
+        <p class="text-2xl italic tracking-wide dark:text-white text-base-900  font-display">
           {section.title}
         </p>
 
         <ul role="list" class="grid gap-2 sm:grid-cols-2 lg:col-span-2">
           {section.items.map((item) => (
-            <li class="relative flex flex-col justify-between w-full h-full p-6 overflow-hidden transition-all transform ring-1 shadow   min-h-72 rounded-2xl bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950        ring-base-200     dark:ring-base-800 ring-inset group hover:shadow-light   dark:hover:shadow-dark">
+            <li class="relative flex flex-col justify-between w-full h-full p-6 overflow-hidden shadow transition-all transform ring-1  min-h-72 rounded-2xl bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950 ring-base-200 dark:ring-base-800 ring-inset group hover:shadow-light dark:hover:shadow-dark">
               <div class="flex items-center justify-between gap-x-4">
                 <div>
                   <Text
                     tag="h3"
                     variant="textBase"
-                    class="font-medium dark:text-white text-base-900    "
+                    class="font-medium dark:text-white text-base-900 "
                   >
                     {item.name}
                   </Text>
                   <Text
                     tag="p"
                     variant="textSM"
-                    class="      dark:text-base-400 text-base-600"
+                    class=" dark:text-base-400 text-base-600"
                   >
                     {item.about}
                   </Text>

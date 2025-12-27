@@ -13,7 +13,7 @@ const posts = await Promise.all(
   <button
     type="button"
     id="searchButton"
-    class="flex items-center w-full flex-auto appearance-none rounded-full text-center outline outline-base-200 dark:outline-base-800 dark:text-white text-base-900 outline-inset border-transparent px-3 py-2 shadow-base-800/5 dark:placeholder:text-base-400 dark:place-holder-text-base-600 duration-300 h-10 focus:border-base-500 focus:outline-none focus:outline-4 focus:outline-base-500/10 sm:text-sm bg-base-50 dark:bg-base-800 max-w-xs mx-auto"
+    class="flex items-center flex-auto w-full h-10 max-w-xs px-3 py-2 mx-auto text-center border-transparent rounded-full appearance-none outline outline-base-200 dark:outline-base-800 dark:text-white text-base-900 outline-inset shadow-base-800/5 dark:placeholder:text-base-400 dark:place-holder-text-base-600 duration-300 focus:border-base-500 focus:outline-none focus:outline-4 focus:outline-base-500/10 sm:text-sm bg-base-50 dark:bg-base-800"
     aria-label="Search posts"
   >
     <svg
@@ -32,7 +32,7 @@ const posts = await Promise.all(
   </button>
   <div
     id="searchModal"
-    class="fixed inset-0 z-50 overflow-y-auto hidden"
+    class="fixed inset-0 z-50 hidden overflow-y-auto"
     role="dialog"
     aria-modal="true"
   >
@@ -43,13 +43,13 @@ const posts = await Promise.all(
       >
       </div>
       <div
-        class="inline-block w-full max-w-2xl px-8 mb-8 mt-12 lg:mt-48 text-left align-middle transition-all transform relative"
+        class="relative inline-block w-full max-w-2xl px-8 mt-12 mb-8 text-left align-middle lg:mt-48 transition-all transform"
       >
         <div class="hidden">
           <button
             type="button"
             id="closeSearch"
-            class="text-zinc-400 hover:text-zinc-500 cursor-pointer ml-auto"
+            class="ml-auto cursor-pointer text-zinc-400 hover:text-zinc-500"
             aria-label="Close search"
           >
             <svg
@@ -70,11 +70,11 @@ const posts = await Promise.all(
           type="text"
           id="searchInput"
           placeholder="Search posts..."
-          class="w-full flex-auto appearance-none rounded-full text-center outline outline-base-200 dark:outline-base-800 dark:text-white text-base-900 outline-inset border-transparent px-3 py-2 shadow-base-800/5 dark:placeholder:text-base-400 dark:place-holder-text-base-600 duration-300 h-10 focus:border-base-500 focus:outline-none focus:outline-4 focus:outline-base-500/10 sm:text-sm bg-base-50 dark:bg-base-800"
+          class="flex-auto w-full h-10 px-3 py-2 text-center border-transparent rounded-full appearance-none outline outline-base-200 dark:outline-base-800 dark:text-white text-base-900 outline-inset shadow-base-800/5 dark:placeholder:text-base-400 dark:place-holder-text-base-600 duration-300 focus:border-base-500 focus:outline-none focus:outline-4 focus:outline-base-500/10 sm:text-sm bg-base-50 dark:bg-base-800"
         />
         <div
           id="searchResults"
-          class="max-h-100 rounded-xl mt-2 overflow-y-auto bg-white dark:bg-black overflow-hidden w-full divide-y divide-zinc-200 border-y border-zinc-200 dark:border-y-black dark:divide-white/5 scrollbar-hide"
+          class="w-full mt-2 overflow-hidden overflow-y-auto bg-white max-h-100 rounded-xl dark:bg-black divide-y divide-zinc-200 border-y border-zinc-200 dark:border-y-black dark:divide-white/5 scrollbar-hide"
         >
         </div>
       </div>
@@ -131,7 +131,7 @@ const posts = await Promise.all(
       if (results.length === 0) {
         searchResults.innerHTML = `
         <div class="p-8">
-            <Text tag="h3" variant="textBase" class="font-medium text-zinc-500 font-medium">
+            <Text tag="h3" variant="textBase" class="font-medium text-zinc-500">
               There's nothing here,...
             </Text>
         </div>
@@ -144,10 +144,10 @@ const posts = await Promise.all(
         .map(
           (result) => `
             <a href="/blog/posts/${result.item.slug}" class="block p-8 hover:bg-zinc-100 duration-300 dark:hover:bg-white/5">
-              <h3  class="font-medium text-sm text-zinc-900 dark:text-white block">
+              <h3  class="block text-sm font-medium text-zinc-900 dark:text-white">
                 ${result.item.title}
               </h3>
-              <p  class="text-zinc-500 text-xs block">
+              <p  class="block text-xs text-zinc-500">
                 ${result.item.description}
               </p>
             </a>

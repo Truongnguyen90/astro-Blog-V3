@@ -2,7 +2,7 @@
 // Assets
 import { Image } from "astro:assets";
 // Fundations
-import Link from "@/components/fundations/elements/Link.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 const { title, url, description, pubDate, image } = {
   url: "/blog/posts/" + Astro.props.post.slug,
@@ -17,8 +17,8 @@ const { title, url, description, pubDate, image } = {
 };
 ---
 
-<div
-  class="grid sm:grid-cols-2 p-2 ring-base-200 dark:ring-base-800 group shadow rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950 relative"
+<article
+  class="relative p-2 shadow grid sm:grid-cols-2 ring-base-200 dark:ring-base-800 group rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-white dark:from-base-800 duration-300 to-base-100 dark:to-base-950"
 >
   <a
     href={url}
@@ -26,7 +26,7 @@ const { title, url, description, pubDate, image } = {
     aria-label={`Read more about ${title}`}
     class="absolute inset-0 z-10"></a>
   <div
-    class="flex flex-col justify-between md:min-h-96 p-4 rounded-2xl relative overflow-hidden h-full group"
+    class="relative flex flex-col justify-between h-full p-4 overflow-hidden md:min-h-96 rounded-2xl group"
   >
     <div>
       <Text tag="p" variant="textXS" class="dark:text-base-400 text-base-600"
@@ -35,30 +35,32 @@ const { title, url, description, pubDate, image } = {
       <Text
         tag="h3"
         variant="textBase"
-        class="font-medium dark:text-white text-base-900 uppercase text-balance mt-4"
+        class="mt-4 font-medium uppercase dark:text-white text-base-900 text-balance"
       >
         {title}
       </Text>
     </div>
     <div
-      class="sm:-mb-20 sm:group-hover:mb-0 gap-12 duration-300 flex flex-col items-start justify-between relative"
+      class="relative flex flex-col items-start justify-between sm:-mb-20 sm:group-hover:mb-0 gap-12 duration-300"
     >
       <Text
         tag="p"
         variant="textBase"
-        class="dark:text-base-400 text-base-600 leading-6 mt-8 text-balance"
+        class="mt-8 dark:text-base-400 text-base-600 leading-6 text-balance"
       >
         {description}
       </Text>
-      <Link
+      <Button
+        isLink
         size="xs"
         variant="default"
+        href={url}
         aria-label={`Read more about ${title}`}
         aria-hidden={true}
         class="pointer-events-none"
       >
         Read more
-      </Link>
+      </Button>
     </div>
   </div>
   <Image
@@ -66,6 +68,6 @@ const { title, url, description, pubDate, image } = {
     alt={title}
     width={500}
     height={800}
-    class="w-full h-full object-cover rounded-2xl order-first"
+    class="order-first object-cover w-full h-full rounded-2xl"
   />
-</div>
+</article>

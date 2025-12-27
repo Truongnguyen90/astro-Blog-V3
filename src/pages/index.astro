@@ -1,138 +1,16 @@
 ---
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Link from "@/components/fundations/elements/Link.astro";
-import Text from "@/components/fundations/elements/Text.astro";
-import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Components
-import BlogEntries1 from "@/components/blog/BlogEntries1.astro";
-import StackEntries1 from "@/components/stack/StackEntries1.astro";
-import ProjectEntries1 from "@/components/projects/ProjectEntries1.astro";
-// Content
-import { getCollection } from "astro:content";
-const allPosts = await getCollection("posts");
-const allProjects = await getCollection("projects");
-// Assets
-import { Image } from "astro:assets";
-import Avatar from "@/images/assets/avatar.png";
-import LogoCloud from "@/components/assets/LogoCloud.astro";
+// Sections
+import Hero from "@/components/landing/Hero.astro";
+import ProjectsPreview from "@/components/landing/ProjectsPreview.astro";
+import BlogPreview from "@/components/landing/BlogPreview.astro";
+import StackPeview from "@/components/landing/StackPeview.astro";
 ---
 
 <BaseLayout>
-  <section class="overflow-hidden relative">
-    <Wrapper variant="standard" class="py-24 relative">
-      <div class="text-center">
-        <div class="flex justify-center">
-          <Text
-            tag="a"
-            variant="textSM"
-            underlined={true}
-            href="/studio"
-            class="flex items-center gap-2 group text-base-900 dark:text-white"
-          >
-            Hire me 2 spots open
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right size-4"
-              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M9 6l6 6l-6 6"></path></svg
-            >
-          </Text>
-        </div>
-        <div class="mt-8 dark:text-white text-base-900 text-balance">
-          <Text
-            tag="h1"
-            variant="displayXL"
-            class="flex items-baseline justify-center gap-3 font-medium"
-          >
-            Hi, I'm Jarvis
-            <Image
-              width={400}
-              height={200}
-              src={Avatar}
-              alt="#_"
-              class="size-12 rounded-xl md:size-16 hover:scale-150 duration-300 hover:rotate-6 ease-in-out"
-            />,
-          </Text>
-          <Text
-            tag="p"
-            variant="displayXL"
-            class="italic tracking-wide font-display dark:text-base-400 text-base-600"
-          >
-            software engineer.
-          </Text>
-        </div>
-        <Text
-          tag="p"
-          variant="textLG"
-          class="mt-4 dark:text-base-400 text-base-600 text-balance"
-        >
-          Crafting code, one line at a time: meet flaco, software engineer
-          extraordinaire, yo!
-        </Text>
-        <LogoCloud />
-      </div>
-    </Wrapper>
-  </section>
-  <section>
-    <Wrapper variant="standard" class="py-12">
-      <div class="flex items-end justify-between">
-        <Text
-          tag="h2"
-          variant="displaySM"
-          class="italic tracking-wide dark:text-white text-base-900 font-display"
-        >
-          Projects
-        </Text>
-        <Link size="xs" variant="muted" href="/projects/home"
-          >See them all
-        </Link>
-      </div>
-      <div class="grid gap-2 mt-6 md:grid-cols-2">
-        {allProjects.slice(0, 2).map((post) => <ProjectEntries1 post={post} />)}
-      </div>
-    </Wrapper>
-  </section>
-  <section>
-    <Wrapper variant="standard" class="py-12">
-      <div class="flex items-end justify-between">
-        <Text
-          tag="h2"
-          variant="displaySM"
-          class="italic tracking-wide dark:text-white text-base-900 font-display"
-        >
-          Blog
-        </Text>
-        <Link size="xs" variant="muted" href="/blog/1"
-          >Read all my blog posts
-        </Link>
-      </div>
-      <div  class="gap-2 mt-6">
-        {allPosts.slice(0, 1).map((post) => <BlogEntries1 post={post} />)}
-      </div>
-    </Wrapper>
-  </section>
-  <section>
-    <Wrapper variant="standard" class="py-12">
-      <div class="flex items-end justify-between">
-        <Text
-          tag="h2"
-          variant="displaySM"
-          class="italic tracking-wide dark:text-white text-base-900 font-display"
-        >
-          Stack
-        </Text>
-        <Link size="xs" variant="muted" href="/stack"
-          >Check out my whole stack
-        </Link>
-      </div>
-      <StackEntries1 />
-    </Wrapper>
-  </section>
+  <Hero />
+  <ProjectsPreview />
+  <BlogPreview />
+  <StackPeview />
 </BaseLayout>

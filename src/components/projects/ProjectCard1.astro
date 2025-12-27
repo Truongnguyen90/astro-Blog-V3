@@ -1,0 +1,55 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+// Icons
+import Plus from "@/components/fundations/icons/Plus.astro";
+const { title, url, subtitle } = {
+  url: "/projects/" + Astro.props.post.slug,
+  title: Astro.props.post.data.title,
+  subtitle: Astro.props.post.data.subtitle,
+};
+---
+
+<div
+  class="relative flex flex-col justify-between h-full p-8 overflow-hidden shadow ring-1 min-h-72 rounded-3xl ring-base-200 dark:ring-base-800 bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950 ring-inset group hover:shadow-light dark:hover:shadow-dark transform transition-all"
+>
+  <a href={url} title={`Read more about ${title}`} class="absolute inset-0 z-10"
+  ></a>
+  <div class="flex items-center justify-between">
+    <Text
+      tag="h3"
+      variant="textBase"
+      class="font-medium uppercase dark:text-white text-base-900"
+    >
+      {title}
+    </Text>
+    <div
+      class="p-1 text-white bg-black rounded-full dark:bg-base-50 dark:text-base-900 group-hover:-rotate-45 duration-300"
+    >
+      <Plus class="size-5" />
+    </div>
+  </div>
+  <div
+    class="flex flex-col items-start justify-between -mb-20 group-hover:mb-0 gap-12 duration-300"
+  >
+    <Text
+      tag="p"
+      variant="textBase"
+      class="mt-8 dark:text-base-400 text-base-600 leading-6 text-balance"
+    >
+      {subtitle}
+    </Text>
+    <Button
+      isLink
+      size="xs"
+      variant="default"
+      href={url}
+      title={`Read more about ${title}`}
+      aria-hidden={true}
+      class="pointer-events-none"
+    >
+      Read more
+    </Button>
+  </div>
+</div>
