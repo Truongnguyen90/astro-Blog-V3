@@ -12,7 +12,12 @@ const { title, url, subtitle } = {
 ---
 
 <div
-  class="relative flex flex-col justify-between h-full p-8 overflow-hidden shadow ring-1 min-h-72 rounded-3xl ring-base-200 dark:ring-base-800 bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950 ring-inset group hover:shadow-light dark:hover:shadow-dark transform transition-all"
+  class="relative flex flex-col justify-between h-full p-8 overflow-hidden min-h-72 rounded-3xl
+         bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950
+         shadow-[var(--neuro-shadow-light)] dark:shadow-[var(--neuro-shadow-dark)]
+         hover:shadow-[var(--neuro-shadow-hover-light)] dark:hover:shadow-[var(--neuro-shadow-hover-dark)]
+         ring-1 ring-inset ring-white/40 dark:ring-white/5
+         duration-200 transition-all group cursor-pointer"
 >
   <a href={url} title={`Read more about ${title}`} class="absolute inset-0 z-10"
   ></a>

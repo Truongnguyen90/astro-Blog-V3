@@ -93,7 +93,12 @@ const stack = [
         {section.items.map((item) => (
           <div role="listitem" class="w-full min-h-72 min-w-72">
             <div
-              class={`flex flex-col ring-1 shadow justify-between p-6 rounded-2xl relative overflow-hidden h-full bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950 ring-base-200 dark:ring-base-800 ring-inset group dark:hover:shadow-dark transform transition-all ${item.rotation}`}
+              class={`flex flex-col justify-between p-6 rounded-2xl relative overflow-hidden h-full
+                      bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950
+                      shadow-[var(--neuro-shadow-light)] dark:shadow-[var(--neuro-shadow-dark)]
+                      hover:shadow-[var(--neuro-shadow-hover-light)] dark:hover:shadow-[var(--neuro-shadow-hover-dark)]
+                      ring-1 ring-inset ring-white/40 dark:ring-white/5
+                      duration-200 transition-all group cursor-pointer ${item.rotation}`}
             >
               <div class="flex items-center justify-between gap-x-4">
                 <div>

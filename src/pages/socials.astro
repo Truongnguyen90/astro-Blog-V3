@@ -135,7 +135,13 @@ const sections = [
                   <a
                     href={item.url}
                     title={item.name}
-                    class="relative flex flex-col w-full h-full p-6 overflow-hidden shadow ring-1 rounded-2xl dark:ring-base-800 bg-linear-45 from-base-50 dark:from-base-800 duration-300 to-base-100 dark:to-base-950 ring-base-200 ring-inset group hover:shadow-light dark:hover:shadow-dark hover:ring-accent-400 dark:hover:ring-accent-500 transform transition-all"
+                    class="relative flex flex-col w-full h-full p-6 overflow-hidden rounded-2xl
+                           bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950
+                           shadow-[var(--neuro-shadow-light)] dark:shadow-[var(--neuro-shadow-dark)]
+                           hover:shadow-[var(--neuro-shadow-hover-light)] dark:hover:shadow-[var(--neuro-shadow-hover-dark)]
+                           ring-1 ring-inset ring-white/40 dark:ring-white/5
+                           hover:ring-accent-400/50 dark:hover:ring-accent-500/50
+                           duration-200 transition-all group cursor-pointer"
                   >
                     <div class="flex items-center gap-4 group  dark:text-base-400 text-base-600">
                       <Image

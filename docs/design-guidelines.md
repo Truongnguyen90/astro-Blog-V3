@@ -459,6 +459,211 @@ dark:focus:shadow-[var(--accent-glow-dark)]
 
 ---
 
+## Neuromorphism Effects
+
+### Overview
+
+Neuromorphism (neumorphism) adds soft, extruded depth to UI elements through multi-layered shadows that mimic physical objects. This implementation maintains the retro aesthetic while enhancing visual depth.
+
+**Key Principles:**
+- Light source from top-left (standard neumorphism convention)
+- Multiple layered shadows for realistic depth
+- Subtle effects that enhance, don't overpower
+- Accessibility-focused with improved contrast over traditional neumorphism
+- Dark mode adaptation with reduced contrast
+
+### Neuromorphism Tokens
+
+**Light Mode - Extruded Appearance:**
+```css
+--neuro-shadow-light:
+  -6px -6px 14px rgba(255, 255, 255, 0.9),
+  6px 6px 14px rgba(0, 0, 0, 0.08),
+  inset 0 0 0 0.5px rgba(255, 255, 255, 0.5);
+```
+- Top-left highlight: Bright white shadow (-6px -6px)
+- Bottom-right shadow: Subtle dark shadow (6px 6px)
+- Inner border: Soft white border for definition
+
+**Light Mode - Inset/Pressed State:**
+```css
+--neuro-shadow-inset-light:
+  inset -4px -4px 10px rgba(255, 255, 255, 0.8),
+  inset 4px 4px 10px rgba(0, 0, 0, 0.08),
+  0 1px 2px rgba(0, 0, 0, 0.05);
+```
+- Inverted shadows create pressed appearance
+- Outer shadow adds subtle depth
+
+**Light Mode - Hover Enhanced:**
+```css
+--neuro-shadow-hover-light:
+  -8px -8px 18px rgba(255, 255, 255, 1),
+  8px 8px 18px rgba(0, 0, 0, 0.12),
+  inset 0 0 0 0.5px rgba(255, 255, 255, 0.6);
+```
+- Increased offset (8px vs 6px) for more depth
+- Stronger shadows for emphasis
+
+**Dark Mode - Subtle Appearance:**
+```css
+--neuro-shadow-dark:
+  -4px -4px 10px rgba(255, 255, 255, 0.03),
+  4px 4px 10px rgba(0, 0, 0, 0.4),
+  inset 0 0 0 0.5px rgba(255, 255, 255, 0.05);
+```
+- Reduced white highlight for accessibility
+- Stronger dark shadow for depth
+- Subtle contrast to maintain readability
+
+**Dark Mode - Inset State:**
+```css
+--neuro-shadow-inset-dark:
+  inset -3px -3px 8px rgba(255, 255, 255, 0.02),
+  inset 3px 3px 8px rgba(0, 0, 0, 0.5),
+  0 1px 2px rgba(0, 0, 0, 0.3);
+```
+
+**Dark Mode - Hover Enhanced:**
+```css
+--neuro-shadow-hover-dark:
+  -5px -5px 12px rgba(255, 255, 255, 0.05),
+  5px 5px 12px rgba(0, 0, 0, 0.5),
+  inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+```
+
+### Gradient Tokens
+
+**Light Mode Gradient:**
+```css
+--neuro-gradient-light: linear-gradient(135deg,
+  rgba(255, 255, 255, 0.8) 0%,
+  rgba(255, 255, 255, 0.4) 50%,
+  rgba(0, 0, 0, 0.03) 100%);
+```
+- 135° diagonal for natural depth
+- Fades from bright to subtle shadow
+
+**Dark Mode Gradient:**
+```css
+--neuro-gradient-dark: linear-gradient(135deg,
+  rgba(255, 255, 255, 0.03) 0%,
+  rgba(255, 255, 255, 0.01) 50%,
+  rgba(0, 0, 0, 0.2) 100%);
+```
+
+### Button Pressed State
+
+**Light Mode:**
+```css
+--neuro-pressed-light:
+  inset -2px -2px 6px rgba(255, 255, 255, 0.7),
+  inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+```
+
+**Dark Mode:**
+```css
+--neuro-pressed-dark:
+  inset -2px -2px 6px rgba(255, 255, 255, 0.02),
+  inset 2px 2px 6px rgba(0, 0, 0, 0.6);
+```
+
+### Usage Patterns
+
+**Standard Card with Neuromorphism:**
+```css
+shadow-[var(--neuro-shadow-light)]
+dark:shadow-[var(--neuro-shadow-dark)]
+hover:shadow-[var(--neuro-shadow-hover-light)]
+dark:hover:shadow-[var(--neuro-shadow-hover-dark)]
+ring-1 ring-inset ring-white/40 dark:ring-white/5
+duration-200 transition-all
+```
+
+**Button with Pressed State:**
+```css
+shadow-[var(--neuro-shadow-light)]
+dark:shadow-[var(--neuro-shadow-dark)]
+hover:shadow-[var(--neuro-shadow-hover-light)]
+dark:hover:shadow-[var(--neuro-shadow-hover-dark)]
+active:shadow-[var(--neuro-pressed-light)]
+dark:active:shadow-[var(--neuro-pressed-dark)]
+active:scale-[0.98]
+```
+
+**Input Field (Inset):**
+```css
+shadow-[var(--neuro-shadow-inset-light)]
+dark:shadow-[var(--neuro-shadow-inset-dark)]
+focus:shadow-[var(--neuro-shadow-light)]
+dark:focus:shadow-[var(--neuro-shadow-dark)]
+```
+
+### Component Applications
+
+**Applied to:**
+- ✅ Buttons (all variants with pressed states)
+- ✅ Blog cards
+- ✅ Project cards (1 & 2)
+- ✅ Work cards
+- ✅ Stack cards (1 & 2)
+- ✅ Social media cards
+- ✅ Studio service cards
+
+**Best Practices:**
+
+✅ **DO:**
+- Use on light/off-white backgrounds (#f6f6f4) for best effect
+- Maintain subtle depth - don't overdo shadow intensity
+- Apply consistent timing (duration-200) for smooth transitions
+- Combine with accent color rings on hover
+- Test in both light and dark modes
+
+❌ **DON'T:**
+- Use on dark backgrounds in light mode (won't be visible)
+- Create excessive depth with large offsets (>10px)
+- Mix neuromorphism with flat shadow styles
+- Forget active/pressed states on interactive elements
+- Sacrifice accessibility for aesthetic
+
+### Accessibility Considerations
+
+**Contrast Ratios:**
+- Enhanced from traditional neumorphism
+- Light mode: Maintains 4.5:1 minimum for text
+- Dark mode: Reduced highlights prevent glare
+- All text remains WCAG 2.1 AA compliant
+
+**Interactive Feedback:**
+- Hover states clearly visible
+- Active/pressed states provide tactile feedback
+- Focus states combine neuromorphism with accent glow
+- Keyboard navigation fully supported
+
+**Motion Preferences:**
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+### Performance
+
+**Optimizations:**
+- CSS custom properties for efficient updates
+- Hardware-accelerated transforms (scale)
+- Minimal repaints with box-shadow only
+- Fast transition timing (200ms)
+
+**Browser Support:**
+- Modern browsers with CSS custom properties
+- Graceful degradation to flat shadows
+- No JavaScript required
+
+---
+
 ## Interactive States
 
 ### Hover States
@@ -933,6 +1138,16 @@ src/
 ---
 
 ## Changelog
+
+### Version 1.1 (December 30, 2025)
+- **Added Neuromorphism Effects:**
+  - Created comprehensive neuromorphism token system
+  - Implemented soft extruded shadows for cards and buttons
+  - Added pressed/unpressed states for interactive elements
+  - Optimized for both light and dark modes
+  - Applied to all major components (buttons, cards, forms)
+  - Maintained accessibility (WCAG 2.1 AA compliance)
+  - Enhanced retro aesthetic with subtle depth
 
 ### Version 1.0 (December 30, 2025)
 - Initial design system documentation

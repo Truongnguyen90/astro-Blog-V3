@@ -18,7 +18,12 @@ const { title, url, description, pubDate, image } = {
 ---
 
 <article
-  class="relative p-2 shadow grid sm:grid-cols-2 ring-base-200 dark:ring-base-800 group rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-white dark:from-base-800 duration-300 to-base-100 dark:to-base-950"
+  class="relative p-2 grid sm:grid-cols-2 group rounded-3xl duration-200 transition-all
+         bg-linear-45 from-white dark:from-base-800 to-base-100 dark:to-base-950
+         shadow-[var(--neuro-shadow-light)] dark:shadow-[var(--neuro-shadow-dark)]
+         hover:shadow-[var(--neuro-shadow-hover-light)] dark:hover:shadow-[var(--neuro-shadow-hover-dark)]
+         ring-1 ring-inset ring-white/40 dark:ring-white/5
+         cursor-pointer"
 >
   <a
     href={url}
