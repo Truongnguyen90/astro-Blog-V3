@@ -74,6 +74,9 @@
     0 1px 4px -1px rgba(0, 0, 0, 0.04),
     inset 0 0 0 0.3px hsla(0, 0%, 100%, 0.02),
     0 0 0 0.1px hsla(0, 0%, 100%, 0.05);
+  /* Accent Effects */
+  --accent-glow: 0 0 0 3px oklch(0.768 0.233 130.85 / 0.2);
+  --accent-glow-dark: 0 0 0 3px oklch(0.841 0.238 128.85 / 0.25);
 }
 
 

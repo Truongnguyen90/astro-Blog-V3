@@ -10,6 +10,17 @@ const {
   ...rest
 } = Astro.props;
 const defaultClass = [
+  "text-base-900",
+  "bg-accent-400",
+  "hover:bg-accent-500",
+  "focus:outline-accent-500",
+  // Dark
+  "dark:text-base-950",
+  "dark:bg-accent-400",
+  "dark:hover:bg-accent-500",
+  "dark:focus:outline-accent-500",
+];
+const secondaryClass = [
   "text-white",
   "bg-base-900",
   "hover:bg-base-800",
@@ -19,12 +30,6 @@ const defaultClass = [
   "dark:bg-base-100",
   "dark:hover:bg-base-200",
   "dark:focus:outline-base-300",
-];
-const accentClass = [
-  "text-base-900",
-  "bg-accent-300",
-  "hover:bg-accent-400",
-  "focus:outline-accent-400",
 ];
 const mutedClass = [
   "text-base-950",
@@ -68,7 +73,7 @@ const gapMap = {
 };
 const variantClass = {
   default: defaultClass,
-  accent: accentClass,
+  secondary: secondaryClass,
   muted: mutedClass,
   none: [],
 };
