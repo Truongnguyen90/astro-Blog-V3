@@ -113,13 +113,13 @@ displayXL: "text-4xl sm:text-4xl md:text-5xl lg:text-6xl"
 - `base-100`: Light backgrounds
 - `base-200`: Borders, subtle fills
 - `base-300`: Disabled states
-- `base-400`: Secondary text
-- `base-500`: Tertiary text
-- `base-600`: Body text
-- `base-700`: Emphasis text
-- `base-800`: Dark borders
-- `base-900`: Headings, primary text
-- `base-950`: Maximum contrast
+- `base-400`: Placeholder text (rarely used)
+- `base-500`: Disabled text
+- `base-600`: Muted text (use sparingly)
+- `base-700`: **Body text, secondary text** (WCAG AA compliant)
+- `base-800`: Emphasis text, darker body text
+- `base-900`: **Headings, primary text** (maximum contrast)
+- `base-950`: Maximum contrast (rare use)
 
 **Dark Mode:**
 - `base-950`: Background
@@ -196,11 +196,12 @@ bg-accent-100 dark:bg-accent-900
 - Large text (24px): 3:1 minimum
 - UI components: 3:1 minimum
 
-**Tested Combinations:**
-✅ `base-900` on `base-50` - 16.2:1 (excellent)
-✅ `base-600` on `base-50` - 7.8:1 (good)
-✅ `accent-700` on `base-50` - 5.2:1 (pass)
-⚠️ `base-400` on `base-50` - 3.9:1 (use for large text only)
+**Tested Combinations (Light Mode):**
+✅ `base-900` on `base-50` - 16.2:1 (excellent - headings)
+✅ `base-700` on `base-50` - 8.5:1 (excellent - body text) **← Standard for readability**
+✅ `base-600` on `base-50` - 7.8:1 (good - muted text, use sparingly)
+✅ `accent-700` on `base-50` - 5.2:1 (pass - interactive elements)
+⚠️ `base-400` on `base-50` - 3.9:1 (only for large text or disabled states)
 
 ---
 
@@ -266,16 +267,89 @@ p-8      /* 32px - Large feature cards */
 ### Best Practices
 
 ✅ **DO:**
-- Use mt-8 for consistent section spacing
-- Reserve mt-12+ for major visual breaks
-- Apply gap-2 for tight card grids
-- Use py-24 for all page sections
+- Use `py-24` for all page section wrappers (standard across theme)
+- Use `mt-12` for header-to-content spacing (major blocks)
+- Use `gap-12` for section groups
+- Apply `gap-2` for tight card grids
+- Use `flex flex-col gap-X` instead of `space-y-X` (modern, explicit)
+- Maintain 8px baseline grid (8, 16, 24, 32, 48, 96)
+- Reserve `mt-24` for major visual breaks between sections only
 
 ❌ **DON'T:**
-- Mix spacing scales randomly (e.g., mt-5, mt-7)
+- Mix `py-12` and `py-24` for section padding (inconsistent)
+- Use `mt-6` or `mt-8` for major content blocks (too tight)
+- Apply top margin to first heading in centered containers
+- Use `space-y-X` when `flex gap-X` provides better control
+- Use arbitrary spacing values outside the scale (e.g., mt-5, mt-7)
 - Use negative margins (disrupts flow)
-- Forget responsive spacing adjustments
 - Over-space on mobile (cramped screens)
+
+---
+
+## Spacing Patterns
+
+### Pattern 1: Standard Page Layout
+
+```astro
+<section>
+  <Wrapper variant="standard" class="py-24">
+    <div class="text-center">
+      <Text tag="h1" variant="displayXL">Page Title</Text>
+      <Text tag="p" variant="textLG" class="mt-4">Description</Text>
+    </div>
+    <div class="mt-12 flex flex-col gap-2">
+      <!-- Cards or content grid -->
+    </div>
+  </Wrapper>
+</section>
+```
+
+**Key Points:**
+- Section wrapper: `py-24` (96px vertical padding)
+- Header to content: `mt-12` (48px separation)
+- Card grid: `gap-2` (8px tight spacing)
+
+### Pattern 2: Multi-Section Content
+
+```astro
+<div class="mt-12 flex flex-col gap-12">
+  {sections.map((section) => (
+    <div class="flex flex-col gap-6">
+      <Text tag="h2" variant="displaySM">Section Title</Text>
+      <div class="flex flex-col gap-2">
+        <!-- Section items -->
+      </div>
+    </div>
+  ))}
+</div>
+```
+
+**Key Points:**
+- Section groups: `gap-12` (48px between sections)
+- Section internals: `gap-6` (24px for title to items)
+- Item grid: `gap-2` (8px for cards)
+
+### Pattern 3: Blog Post Layout
+
+```astro
+<div class="text-center">
+  <Text tag="h1" variant="displayXL">Post Title</Text>
+  <Text class="mt-2 text-xs">Published date</Text>
+  <Text tag="p" variant="textLG" class="mt-4">Description</Text>
+</div>
+<div class="mt-12 flex flex-col gap-12">
+  <Image />
+  <Wrapper variant="prose"><slot /></Wrapper>
+  <div><!-- Tags --></div>
+  <nav class="mt-24"><!-- Prev/Next navigation --></nav>
+</div>
+```
+
+**Key Points:**
+- Header metadata: `mt-2` (8px for tight coupling)
+- Description: `mt-4` (16px standard)
+- Content sections: `gap-12` (48px between major blocks)
+- Navigation: `mt-24` (96px for major visual break)
 
 ---
 
@@ -1138,6 +1212,27 @@ src/
 ---
 
 ## Changelog
+
+### Version 1.3 (December 30, 2025)
+- **Light Mode Contrast Improvements:**
+  - Updated body/secondary text from `text-base-600` to `text-base-700`
+  - Improved contrast ratio from 7.8:1 to 8.5:1 (excellent WCAG AAA)
+  - Applied across 32 component files site-wide
+  - Enhanced readability while maintaining visual hierarchy
+  - Updated color usage guidelines with accessibility standards
+  - Documented contrast ratios for all common color combinations
+  - Fixed light mode readability issues reported by users
+
+### Version 1.2 (December 30, 2025)
+- **Spacing Consistency Audit & Fixes:**
+  - Standardized all page sections to `py-24` (96px vertical padding)
+  - Unified header-to-content spacing to `mt-12` (48px)
+  - Replaced `space-y-X` with modern `flex flex-col gap-X` pattern
+  - Added comprehensive spacing patterns section
+  - Fixed 9 spacing inconsistencies across 11 files
+  - Enhanced vertical rhythm and breathing room
+  - Documented before/after comparisons in audit report
+  - Reinforced 8px baseline grid adherence
 
 ### Version 1.1 (December 30, 2025)
 - **Added Neuromorphism Effects:**

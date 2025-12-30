@@ -34,7 +34,7 @@ const { frontmatter, previous, next } = Astro.props;
         <Text
           tag="p"
           variant="textLG"
-          class="mt-4 dark:text-base-400 text-base-600 text-balance"
+          class="mt-4 dark:text-base-400 text-base-700 text-balance"
         >
           {frontmatter.subtitle}
         </Text>
@@ -51,7 +51,7 @@ const { frontmatter, previous, next } = Astro.props;
           <Text
             tag="p"
             variant="textSM"
-            class="ml-2 dark:text-base-400 text-base-600"
+            class="ml-2 dark:text-base-400 text-base-700"
           >
             Published: <time
               datetime={new Date(frontmatter.pubDate).toLocaleDateString(
