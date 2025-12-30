@@ -1,0 +1,139 @@
+---
+/**
+ * Admin Media Management Page
+ *
+ * Upload, browse, and manage media files.
+ */
+
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import Text from '@/components/fundations/elements/Text.astro';
+import { MediaUpload } from '@/components/admin/MediaUpload';
+import { MediaGallery } from '@/components/admin/MediaGallery';
+---
+
+<AdminLayout title="Media">
+  <!-- Page Header -->
+  <div class="mb-6">
+    <Text tag="h2" variant="h3" class="text-neutral-900 dark:text-neutral-50 mb-1">
+      Media Library
+    </Text>
+    <Text tag="p" variant="body" class="text-neutral-600 dark:text-neutral-400">
+      Upload and manage images, files, and other media assets
+    </Text>
+  </div>
+
+  <!-- Upload Section -->
+  <div class="bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 p-6 mb-8">
+    <div class="mb-4">
+      <Text tag="h3" variant="h4" class="text-neutral-900 dark:text-neutral-50 mb-1">
+        Upload Media
+      </Text>
+      <Text tag="p" variant="caption" class="text-neutral-600 dark:text-neutral-400">
+        Drag and drop files or click to browse
+      </Text>
+    </div>
+
+    <MediaUpload
+      client:visible
+      maxSizeMB={10}
+      allowedTypes={['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/svg+xml']}
+    />
+  </div>
+
+  <!-- Gallery Section -->
+  <div class="bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 p-6">
+    <div class="mb-4">
+      <Text tag="h3" variant="h4" class="text-neutral-900 dark:text-neutral-50 mb-1">
+        Media Gallery
+      </Text>
+      <Text tag="p" variant="caption" class="text-neutral-600 dark:text-neutral-400">
+        Browse and manage uploaded files
+      </Text>
+    </div>
+
+    <MediaGallery client:visible />
+  </div>
+
+  <!-- Setup Instructions (shown if Supabase not configured) -->
+  <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+    <div class="flex items-start space-x-3">
+      <svg class="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <div class="flex-1">
+        <Text tag="p" variant="body" class="font-medium text-blue-900 dark:text-blue-100 mb-2">
+          Supabase Setup Required
+        </Text>
+        <Text tag="p" variant="caption" class="text-blue-700 dark:text-blue-300 mb-3">
+          To use media upload, you need to configure Supabase Storage. Follow these steps:
+        </Text>
+        <ol class="list-decimal list-inside space-y-2 text-sm text-blue-700 dark:text-blue-300">
+          <li>Create a Supabase project at <a href="https://supabase.com" target="_blank" class="underline">supabase.com</a></li>
+          <li>Go to Storage and create a bucket named <code class="bg-blue-100 dark:bg-blue-900/40 px-1 py-0.5 rounded">media</code></li>
+          <li>Set bucket to <strong>Public</strong> for CDN delivery</li>
+          <li>Create the <code class="bg-blue-100 dark:bg-blue-900/40 px-1 py-0.5 rounded">media_meta</code> table in your database</li>
+          <li>Add your Supabase URL and keys to <code class="bg-blue-100 dark:bg-blue-900/40 px-1 py-0.5 rounded">.env</code></li>
+        </ol>
+        <div class="mt-4 p-3 bg-blue-100 dark:bg-blue-900/40 rounded border border-blue-200 dark:border-blue-700">
+          <Text tag="p" variant="caption" class="font-medium text-blue-900 dark:text-blue-100 mb-1">
+            Database Schema (SQL)
+          </Text>
+          <pre class="text-xs text-blue-800 dark:text-blue-200 overflow-x-auto"><code>CREATE TABLE media_meta (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  filename TEXT NOT NULL,
+  url TEXT NOT NULL,
+  size INTEGER NOT NULL,
+  mime_type TEXT NOT NULL,
+  uploaded_by UUID REFERENCES auth.users(id),
+  uploaded_at TIMESTAMPTZ DEFAULT NOW(),
+  alt_text TEXT,
+  tags TEXT[]
+);
+
+-- Enable RLS
+ALTER TABLE media_meta ENABLE ROW LEVEL SECURITY;
+
+-- Allow authenticated users to view and upload
+CREATE POLICY "Authenticated users can view media"
+  ON media_meta FOR SELECT
+  USING (auth.role() = 'authenticated');
+
+CREATE POLICY "Authenticated users can upload media"
+  ON media_meta FOR INSERT
+  WITH CHECK (auth.role() = 'authenticated');
+
+CREATE POLICY "Users can delete own media"
+  ON media_meta FOR DELETE
+  USING (auth.uid() = uploaded_by);</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Storage Policies Info -->
+  <div class="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
+    <div class="flex items-start space-x-3">
+      <svg class="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+      </svg>
+      <div>
+        <Text tag="p" variant="body" class="font-medium text-yellow-900 dark:text-yellow-100 mb-1">
+          Storage Policies
+        </Text>
+        <Text tag="p" variant="caption" class="text-yellow-700 dark:text-yellow-300">
+          Configure Supabase Storage policies to allow authenticated users to upload and delete files:
+        </Text>
+        <pre class="mt-2 text-xs text-yellow-800 dark:text-yellow-200 bg-yellow-100 dark:bg-yellow-900/40 p-2 rounded overflow-x-auto"><code>-- Storage Policies (in Supabase Dashboard > Storage > Policies)
+
+-- Allow authenticated uploads
+INSERT: auth.role() = 'authenticated'
+
+-- Allow public reads
+SELECT: bucket_id = 'media'
+
+-- Allow users to delete own files
+DELETE: auth.uid() = owner AND bucket_id = 'media'</code></pre>
+      </div>
+    </div>
+  </div>
+</AdminLayout>

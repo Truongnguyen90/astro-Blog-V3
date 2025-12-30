@@ -1,0 +1,235 @@
+---
+/**
+ * Admin Analytics Page
+ *
+ * Displays comprehensive site statistics and content analytics.
+ */
+
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import StatsCard from '@/components/admin/StatsCard.astro';
+import Text from '@/components/fundations/elements/Text.astro';
+import { getCollection } from 'astro:content';
+
+// Get all content collections
+const posts = await getCollection('posts');
+const projects = await getCollection('projects');
+const work = await getCollection('work');
+const store = await getCollection('store');
+const authors = await getCollection('authors');
+
+// Calculate comprehensive statistics
+const now = new Date();
+
+// Posts analytics
+const publishedPosts = posts.filter(p => p.data.pubDate <= now);
+const draftPosts = posts.length - publishedPosts.length;
+const postsThisMonth = posts.filter(p => {
+  const postDate = new Date(p.data.pubDate);
+  return postDate.getMonth() === now.getMonth() && postDate.getFullYear() === now.getFullYear();
+});
+
+// Tag analytics
+const allTags = posts.flatMap(p => p.data.tags || []);
+const uniqueTags = [...new Set(allTags)];
+const tagCounts = allTags.reduce((acc, tag) => {
+  acc[tag] = (acc[tag] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+const topTags = Object.entries(tagCounts)
+  .sort(([, a], [, b]) => b - a)
+  .slice(0, 10);
+
+// Projects analytics
+const liveProjects = projects.filter(p => p.data.live);
+const upcomingProjects = projects.filter(p => !p.data.live);
+
+// Content by month
+const postsByMonth = posts.reduce((acc, post) => {
+  const monthKey = post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+  acc[monthKey] = (acc[monthKey] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
+const recentMonths = Object.entries(postsByMonth)
+  .sort(([a], [b]) => new Date(b).getTime() - new Date(a).getTime())
+  .slice(0, 6);
+
+// Icons
+const documentIcon = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>';
+const folderIcon = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>';
+const briefcaseIcon = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>';
+const tagIcon = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>';
+const userIcon = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>';
+const shoppingIcon = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>';
+---
+
+<AdminLayout title="Analytics">
+  <!-- Overview Stats Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+    <StatsCard
+      label="Total Posts"
+      value={posts.length}
+      caption={`${publishedPosts.length} published, ${draftPosts} drafts`}
+      icon={documentIcon}
+      iconColor="blue"
+    />
+
+    <StatsCard
+      label="Projects"
+      value={projects.length}
+      caption={`${liveProjects.length} live, ${upcomingProjects.length} upcoming`}
+      icon={folderIcon}
+      iconColor="green"
+    />
+
+    <StatsCard
+      label="Work Items"
+      value={work.length}
+      caption="Portfolio pieces"
+      icon={briefcaseIcon}
+      iconColor="purple"
+    />
+
+    <StatsCard
+      label="Unique Tags"
+      value={uniqueTags.length}
+      caption={`${allTags.length} total tag uses`}
+      icon={tagIcon}
+      iconColor="orange"
+    />
+
+    <StatsCard
+      label="Authors"
+      value={authors.length}
+      caption="Content contributors"
+      icon={userIcon}
+      iconColor="red"
+    />
+
+    <StatsCard
+      label="Store Items"
+      value={store.length}
+      caption="Products listed"
+      icon={shoppingIcon}
+      iconColor="yellow"
+    />
+  </div>
+
+  <!-- Posts This Month -->
+  <div class="bg-white dark:bg-neutral-900 rounded-lg p-6 border border-neutral-200 dark:border-neutral-800 mb-8">
+    <Text tag="h3" variant="h4" class="text-neutral-900 dark:text-neutral-50 mb-4">
+      Publishing Activity
+    </Text>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <Text tag="p" variant="caption" class="text-neutral-500 dark:text-neutral-400 uppercase tracking-wide mb-2">
+          This Month
+        </Text>
+        <Text tag="p" variant="display" class="text-4xl font-bold text-neutral-900 dark:text-neutral-50">
+          {postsThisMonth.length}
+        </Text>
+        <Text tag="p" variant="caption" class="text-neutral-600 dark:text-neutral-400">
+          posts published
+        </Text>
+      </div>
+      <div>
+        <Text tag="p" variant="caption" class="text-neutral-500 dark:text-neutral-400 uppercase tracking-wide mb-2">
+          Average per Month
+        </Text>
+        <Text tag="p" variant="display" class="text-4xl font-bold text-neutral-900 dark:text-neutral-50">
+          {Math.round(posts.length / Math.max(recentMonths.length, 1))}
+        </Text>
+        <Text tag="p" variant="caption" class="text-neutral-600 dark:text-neutral-400">
+          based on recent activity
+        </Text>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two Column Layout -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Top Tags -->
+    <div class="bg-white dark:bg-neutral-900 rounded-lg p-6 border border-neutral-200 dark:border-neutral-800">
+      <Text tag="h3" variant="h4" class="text-neutral-900 dark:text-neutral-50 mb-4">
+        Top Tags
+      </Text>
+      <div class="space-y-3">
+        {topTags.map(([tag, count], index) => (
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm font-medium text-neutral-500 dark:text-neutral-400 w-6">
+                #{index + 1}
+              </span>
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
+                {tag}
+              </span>
+            </div>
+            <Text tag="span" variant="caption" class="text-neutral-600 dark:text-neutral-400">
+              {count} {count === 1 ? 'post' : 'posts'}
+            </Text>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Recent Months Activity -->
+    <div class="bg-white dark:bg-neutral-900 rounded-lg p-6 border border-neutral-200 dark:border-neutral-800">
+      <Text tag="h3" variant="h4" class="text-neutral-900 dark:text-neutral-50 mb-4">
+        Posts by Month
+      </Text>
+      <div class="space-y-3">
+        {recentMonths.map(([month, count]) => (
+          <div class="flex items-center justify-between">
+            <Text tag="span" variant="body" class="text-neutral-700 dark:text-neutral-300">
+              {month}
+            </Text>
+            <div class="flex items-center space-x-3">
+              <div class="w-32 bg-neutral-200 dark:bg-neutral-800 rounded-full h-2">
+                <div
+                  class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full"
+                  style={`width: ${(count / Math.max(...recentMonths.map(([, c]) => c))) * 100}%`}
+                />
+              </div>
+              <Text tag="span" variant="caption" class="text-neutral-600 dark:text-neutral-400 w-12 text-right">
+                {count}
+              </Text>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Status Breakdown -->
+  <div class="mt-8 bg-white dark:bg-neutral-900 rounded-lg p-6 border border-neutral-200 dark:border-neutral-800">
+    <Text tag="h3" variant="h4" class="text-neutral-900 dark:text-neutral-50 mb-4">
+      Content Status
+    </Text>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+        <Text tag="p" variant="display" class="text-3xl font-bold text-green-700 dark:text-green-400 mb-1">
+          {publishedPosts.length}
+        </Text>
+        <Text tag="p" variant="caption" class="text-green-600 dark:text-green-300">
+          Published Posts
+        </Text>
+      </div>
+      <div class="text-center p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
+        <Text tag="p" variant="display" class="text-3xl font-bold text-yellow-700 dark:text-yellow-400 mb-1">
+          {draftPosts}
+        </Text>
+        <Text tag="p" variant="caption" class="text-yellow-600 dark:text-yellow-300">
+          Draft Posts
+        </Text>
+      </div>
+      <div class="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+        <Text tag="p" variant="display" class="text-3xl font-bold text-blue-700 dark:text-blue-400 mb-1">
+          {liveProjects.length}
+        </Text>
+        <Text tag="p" variant="caption" class="text-blue-600 dark:text-blue-300">
+          Live Projects
+        </Text>
+      </div>
+    </div>
+  </div>
+</AdminLayout>

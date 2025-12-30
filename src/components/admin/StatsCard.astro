@@ -1,0 +1,72 @@
+---
+/**
+ * Stats Card Component
+ *
+ * Displays a single statistic with icon, label, value, and optional trend.
+ * Reuses existing foundation components for consistency.
+ */
+
+import Text from '@/components/fundations/elements/Text.astro';
+
+interface Props {
+  label: string;
+  value: number | string;
+  caption?: string;
+  icon?: string;
+  iconColor?: 'blue' | 'green' | 'purple' | 'orange' | 'red' | 'yellow';
+  trend?: 'up' | 'down';
+  class?: string;
+}
+
+const {
+  label,
+  value,
+  caption,
+  icon,
+  iconColor = 'blue',
+  trend,
+  class: extraClass = ''
+} = Astro.props;
+
+const iconColorClasses = {
+  blue: 'text-blue-500',
+  green: 'text-green-500',
+  purple: 'text-purple-500',
+  orange: 'text-orange-500',
+  red: 'text-red-500',
+  yellow: 'text-yellow-500'
+};
+
+const trendClasses = {
+  up: 'text-green-600 dark:text-green-400',
+  down: 'text-red-600 dark:text-red-400'
+};
+---
+
+<div class={`bg-white dark:bg-neutral-900 rounded-lg p-6 border border-neutral-200 dark:border-neutral-800 ${extraClass}`}>
+  <div class="flex items-center justify-between mb-2">
+    <Text tag="p" variant="caption" class="text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+      {label}
+    </Text>
+    {icon && (
+      <div class={`${iconColorClasses[iconColor]}`} set:html={icon} />
+    )}
+  </div>
+
+  <div class="flex items-baseline space-x-2">
+    <Text tag="p" variant="display" class="text-3xl font-bold text-neutral-900 dark:text-neutral-50">
+      {value}
+    </Text>
+    {trend && (
+      <span class={`text-sm font-medium ${trendClasses[trend]}`}>
+        {trend === 'up' ? '↑' : '↓'}
+      </span>
+    )}
+  </div>
+
+  {caption && (
+    <Text tag="p" variant="caption" class="text-neutral-600 dark:text-neutral-400 mt-1">
+      {caption}
+    </Text>
+  )}
+</div>

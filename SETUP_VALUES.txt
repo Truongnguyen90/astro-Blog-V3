@@ -1,0 +1,80 @@
+╔════════════════════════════════════════════════════════════════╗
+║   FLACO ADMIN DASHBOARD - SETUP VALUES (COPY-PASTE READY)     ║
+╚════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════
+GITHUB OAUTH APP CONFIGURATION
+═══════════════════════════════════════════════════════════════════
+
+URL: https://github.com/settings/developers
+→ Click "New OAuth App"
+
+Application name:
+Flaco Admin Dashboard
+
+Homepage URL:
+http://localhost:4322
+
+Authorization callback URL:
+https://embujgkwtuazdcmodqst.supabase.co/auth/v1/callback
+
+→ Click "Register application"
+→ Copy Client ID
+→ Click "Generate a new client secret"
+→ Copy Client Secret
+
+═══════════════════════════════════════════════════════════════════
+SUPABASE GITHUB PROVIDER
+═══════════════════════════════════════════════════════════════════
+
+URL: https://embujgkwtuazdcmodqst.supabase.co/project/_/auth/providers
+
+→ Find "GitHub" in the list
+→ Toggle "Enable"
+→ Paste your Client ID from GitHub
+→ Paste your Client Secret from GitHub
+→ Click "Save"
+
+═══════════════════════════════════════════════════════════════════
+SUPABASE REDIRECT URLs
+═══════════════════════════════════════════════════════════════════
+
+URL: https://embujgkwtuazdcmodqst.supabase.co/project/_/auth/url-configuration
+
+Site URL:
+http://localhost:4322
+
+Redirect URLs (add both):
+http://localhost:4322/admin
+http://localhost:4322/admin/login
+
+→ Click "Save"
+
+═══════════════════════════════════════════════════════════════════
+TEST LOGIN
+═══════════════════════════════════════════════════════════════════
+
+URL: http://localhost:4322/admin/login
+
+→ Click "Continue with GitHub"
+→ Authorize the app
+→ Should redirect to http://localhost:4322/admin
+
+═══════════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════
+
+If you get "provider is not enabled" error:
+→ GitHub provider not enabled in Supabase
+→ Go back to authentication providers and enable it
+
+If callback fails:
+→ Check callback URL matches exactly
+→ Clear browser cookies and try again
+
+If you see "Invalid API key":
+→ Get correct anon key from Supabase Settings > API
+→ Update .env file
+→ Restart dev server
+
+═══════════════════════════════════════════════════════════════════

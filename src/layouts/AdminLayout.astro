@@ -1,0 +1,229 @@
+---
+/**
+ * Admin Layout
+ *
+ * Base layout for admin dashboard pages.
+ * Includes navigation, theme toggle, and auth protection.
+ */
+
+import ThemeToggle from '@/components/assets/ThemeToggle.astro';
+import Text from '@/components/fundations/elements/Text.astro';
+import Link from '@/components/fundations/elements/Link.astro';
+import { AuthProvider } from '@/components/admin/AuthProvider';
+import { AuthGuard } from '@/components/admin/AuthGuard';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Admin Dashboard' } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body class="bg-neutral-50 dark:bg-neutral-950">
+    <AuthProvider client:only="react">
+      <AuthGuard client:only="react">
+        <div class="admin-layout min-h-screen">
+          <!-- Sidebar -->
+          <aside class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800">
+            <div class="h-full px-3 py-4 overflow-y-auto">
+              <!-- Logo/Brand -->
+              <div class="mb-5 px-3">
+                <Text tag="h1" variant="h4" class="text-neutral-900 dark:text-neutral-50">
+                  Flaco Admin
+                </Text>
+                <Text tag="p" variant="caption" class="text-neutral-500 dark:text-neutral-400 mt-1">
+                  Dashboard
+                </Text>
+              </div>
+
+              <!-- Navigation -->
+              <nav class="space-y-2">
+                <a
+                  href="/admin"
+                  class={`flex items-center px-3 py-2 rounded-lg transition-colors ${
+                    currentPath === '/admin' || currentPath === '/admin/'
+                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400'
+                      : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                  }`}
+                >
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                  </svg>
+                  Dashboard
+                </a>
+
+                <a
+                  href="/admin/media"
+                  class={`flex items-center px-3 py-2 rounded-lg transition-colors ${
+                    currentPath.startsWith('/admin/media')
+                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400'
+                      : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                  }`}
+                >
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                  </svg>
+                  Media
+                </a>
+
+                <a
+                  href="/admin/analytics"
+                  class={`flex items-center px-3 py-2 rounded-lg transition-colors ${
+                    currentPath.startsWith('/admin/analytics')
+                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400'
+                      : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                  }`}
+                >
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                  </svg>
+                  Analytics
+                </a>
+
+                <!-- Content Section -->
+                <div class="pt-4 mt-4 border-t border-neutral-200 dark:border-neutral-800">
+                  <Text tag="p" variant="caption" class="px-3 mb-2 text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+                    Content
+                  </Text>
+
+                  <a
+                    href="/admin/posts"
+                    class={`flex items-center px-3 py-2 rounded-lg transition-colors ${
+                      currentPath.startsWith('/admin/posts')
+                        ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400'
+                        : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                    }`}
+                  >
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    Posts
+                  </a>
+
+                  <a
+                    href="/admin/projects"
+                    class={`flex items-center px-3 py-2 rounded-lg transition-colors ${
+                      currentPath.startsWith('/admin/projects')
+                        ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400'
+                        : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                    }`}
+                  >
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                    Projects
+                  </a>
+                </div>
+              </nav>
+
+              <!-- User Section -->
+              <div class="absolute bottom-4 left-0 right-0 px-3">
+                <div class="flex items-center justify-between p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+                  <div class="flex items-center space-x-3 min-w-0">
+                    <div class="flex-shrink-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                      <span class="text-white text-sm font-medium" id="user-initials">U</span>
+                    </div>
+                    <div class="min-w-0">
+                      <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100 truncate" id="user-name">
+                        Loading...
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    id="logout-button"
+                    class="flex-shrink-0 p-2 text-neutral-500 hover:text-red-600 dark:text-neutral-400 dark:hover:text-red-400 transition-colors"
+                    title="Sign out"
+                  >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Main Content -->
+          <div class="ml-64">
+            <!-- Top Bar -->
+            <header class="bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-30">
+              <div class="px-6 py-4 flex items-center justify-between">
+                <Text tag="h2" variant="h3" class="text-neutral-900 dark:text-neutral-50">
+                  {title}
+                </Text>
+                <div class="flex items-center space-x-4">
+                  <Link href="/" class="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100">
+                    View Site →
+                  </Link>
+                </div>
+              </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="p-6">
+              <div class="mx-auto max-w-7xl">
+                <slot />
+              </div>
+            </main>
+          </div>
+
+          <!-- Theme Toggle (reuse existing component) -->
+          <ThemeToggle />
+        </div>
+
+        <!-- User Info Script -->
+        <script>
+          import { supabase } from '@/utils/admin/supabase';
+          import { getUserDisplayName } from '@/utils/admin/auth';
+
+          // Update user info in sidebar
+          async function updateUserInfo() {
+            const { data: { user } } = await supabase.auth.getUser();
+
+            if (user) {
+              const displayName = getUserDisplayName(user);
+              const userNameEl = document.getElementById('user-name');
+              const userInitialsEl = document.getElementById('user-initials');
+
+              if (userNameEl) {
+                userNameEl.textContent = displayName;
+              }
+
+              if (userInitialsEl) {
+                const initials = displayName
+                  .split(' ')
+                  .map(n => n[0])
+                  .join('')
+                  .toUpperCase()
+                  .slice(0, 2);
+                userInitialsEl.textContent = initials;
+              }
+            }
+          }
+
+          // Logout handler
+          const logoutButton = document.getElementById('logout-button');
+          logoutButton?.addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = '/admin/login';
+          });
+
+          // Initialize
+          updateUserInfo();
+        </script>
+      </AuthGuard>
+    </AuthProvider>
+  </body>
+</html>
