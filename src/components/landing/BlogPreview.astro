@@ -12,7 +12,7 @@ const allPosts = await getCollection("posts");
 ---
 
 <section>
-  <Wrapper variant="standard" class="py-12">
+  <Wrapper variant="standard" class="py-24">
     <div class="flex items-end justify-between">
       <Text
         tag="h2"
@@ -25,7 +25,7 @@ const allPosts = await getCollection("posts");
         >Read all my blog posts
       </Button>
     </div>
-    <div class="mt-6 gap-2">
+    <div class="mt-12 gap-2">
       {allPosts.slice(0, 1).map((post) => <BlogCard post={post} />)}
     </div>
   </Wrapper>

@@ -24,7 +24,7 @@ const { frontmatter, previous, next } = Astro.props;
         <Text
           tag="h1"
           variant="displayXL"
-          class="mt-8 italic tracking-wide dark:text-white text-base-900 text-balance font-display"
+          class="italic tracking-wide dark:text-white text-base-900 text-balance font-display"
         >
           {frontmatter.title}
         </Text>
@@ -56,13 +56,13 @@ const { frontmatter, previous, next } = Astro.props;
           {frontmatter.description}
         </Text>
       </div>
-      <div class="space-y-12">
+      <div class="mt-12 flex flex-col gap-12">
         <Image
           src={frontmatter.image.url}
           alt={frontmatter.image.alt}
           width={800}
           height={400}
-          class="object-cover object-center w-full mt-6 shadow rounded-2xl ring-1 max-h-72 dark:ring-base-800 ring-base-200"
+          class="object-cover object-center w-full shadow rounded-2xl ring-1 max-h-72 dark:ring-base-800 ring-base-200"
         />
         <Wrapper variant="prose">
           <slot />
