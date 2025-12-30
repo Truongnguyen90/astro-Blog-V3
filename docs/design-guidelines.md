@@ -742,11 +742,20 @@ dark:focus:shadow-[var(--neuro-shadow-dark)]
 
 ### Hover States
 
-**Cards:**
+**Cards (with lift effect):**
 ```css
-hover:shadow-light dark:hover:shadow-dark
-hover:ring-accent-400 dark:hover:ring-accent-500
+/* Enhanced neuromorphism shadows + lift animation */
+duration-300 transition-all
+hover:-translate-y-1
+hover:shadow-[var(--neuro-shadow-hover-light)] dark:hover:shadow-[var(--neuro-shadow-hover-dark)]
+hover:ring-accent-400/50 dark:hover:ring-accent-500/50
 ```
+
+**Effect Details:**
+- **Shadow enhancement:** Deeper, more pronounced shadows on hover (12px offsets + 8px lift shadow)
+- **Lift animation:** Subtle -4px vertical translation creates floating effect
+- **Duration:** 300ms for smooth, noticeable transition
+- **Ring accent:** Optional colored ring highlight for interactive feedback
 
 **Buttons:**
 ```css
@@ -1212,6 +1221,16 @@ src/
 ---
 
 ## Changelog
+
+### Version 1.4 (December 30, 2025)
+- **Enhanced Hover Shadow Effects:**
+  - Increased hover shadow depth (8px → 12px offsets)
+  - Added lift shadow layer (0 8px 16px) for floating effect
+  - Implemented hover lift animation (hover:-translate-y-1)
+  - Extended transition duration (200ms → 300ms) for smoother feel
+  - Applied across all cards and interactive elements (9 components)
+  - Enhanced both light and dark mode hover states
+  - Created more engaging, tactile user experience
 
 ### Version 1.3 (December 30, 2025)
 - **Light Mode Contrast Improvements:**
