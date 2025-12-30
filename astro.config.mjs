@@ -14,6 +14,6 @@ export default defineConfig({
       drafts: false,
     },
   },
-  site: "https://yourdomain.com",
+  site: "https://truongnguyen.com",
   integrations: [sitemap()],
 });

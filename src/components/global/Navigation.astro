@@ -9,36 +9,28 @@ import Plus from "@/components/fundations/icons/Plus.astro";
 // Navigation links
 const navLinks = [
   {
-    text: "Colors",
-    href: "/system/colors",
-  },
-  {
-    text: "Links",
-    href: "/system/link",
-  },
-  {
-    text: "Buttons",
-    href: "/system/buttons",
-  },
-  {
-    text: "Typography",
-    href: "/system/typography",
-  },
-  {
     text: "Blog",
     href: "/blog/1/",
-  },
-  {
-    text: "Store",
-    href: "/store/",
   },
   {
     text: "Projects",
     href: "/projects/",
   },
   {
-    text: "Studio",
-    href: "/studio",
+    text: "Work",
+    href: "/work/",
+  },
+  {
+    text: "Tools",
+    href: "/stack",
+  },
+  {
+    text: "Now",
+    href: "/now",
+  },
+  {
+    text: "Contact",
+    href: "/forms/contact",
   },
 ];
 ---
@@ -57,22 +49,22 @@ const navLinks = [
           aria-label="Go to homepage"
           class="italic text-center font-display text-base-900 dark:text-white"
         >
-          Jarvis
+          Truong Nguyen
         </Text>
       </div>
       <div class="flex items-center justify-end gap-2">
         <div class="flex items-center gap-2">
           <a
             class="text-sm text-base-500 hover:text-base-900 duration-300 dark:text-base-400 dark:hover:text-white"
-            href="/system/overview"
+            href="/socials"
           >
-            Overview
+            Social
           </a>
           <a
             class="text-sm text-base-500 hover:text-base-900 duration-300 dark:text-base-400 dark:hover:text-white"
-            href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU"
+            href="/studio"
           >
-            Buy Flaco
+            Studio
           </a>
         </div>
         <!-- Always show menu toggle -->
@@ -125,12 +117,12 @@ const navLinks = [
                   tag="a"
                   variant="textXL"
                   underlined={true}
-                  href="/system/overview"
-                  title="Overview"
-                  aria-label="Overview"
+                  href="/socials"
+                  title="Social"
+                  aria-label="Social"
                   class="block text-right dark:text-white text-base-900"
                 >
-                  Overview
+                  Social
                 </Text>
               </div>
               <div class="flex justify-end md:hidden">
@@ -138,12 +130,12 @@ const navLinks = [
                   tag="a"
                   variant="textXL"
                   underlined={true}
-                  href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU"
-                  title="Buy Flaco"
-                  aria-label="Buy Flaco"
+                  href="/studio"
+                  title="Studio"
+                  aria-label="Studio"
                   class="block text-right dark:text-white text-base-900"
                 >
-                  Buy Flaco
+                  Studio
                 </Text>
               </div>
             </nav>
